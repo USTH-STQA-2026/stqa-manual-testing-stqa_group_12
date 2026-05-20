@@ -6,7 +6,7 @@
 
 | Thông tin | |
 |---|---|
-| **Nhóm** | `<!-- Tên nhóm -->` |
+| **Nhóm** | Group 12 |
 | **Ngày tạo** | `<!-- DD/MM/YYYY -->` |
 | **Hệ thống** | https://stqa.rbc.vn |
 | **Tham chiếu** | SRS v1.0 |
@@ -22,14 +22,15 @@
 
 ### IDM — Đăng nhập (REQ-01)
 
-| Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
-|---|---|---|---|
-| Email có tồn tại trong DB? | Có | `librarian@library.com` | Đăng nhập thành công |
-| | Không | `noone@email.com` | Thông báo lỗi |
-| Mật khẩu có đúng? | Đúng | `admin123` | Đăng nhập thành công |
-| | Sai | `wrongpass` | Thông báo lỗi |
-| Ô nhập có rỗng? | Không rỗng | (giá trị bất kỳ) | Xử lý bình thường |
-| | Rỗng | `""` | Thông báo "Vui lòng nhập..." |
+| Đặc tính | Phân vùng | Giá trị đại diện | Kết quả mong đợi |
+|----------|-----------|------------------|------------------|
+| Email có tồn tại? | Có | `ba.nguyen@email.com` | Đăng nhập thành công |
+| | Không | `noone@email.com` | Hiển thị "Không tìm thấy thành viên" |
+| Mật khẩu có đúng? | Đúng | `password123` | Đăng nhập thành công |
+| | Sai | `wrongpass` | Hiển thị "Mật khẩu không đúng" |
+| Email bị rỗng | Email rỗng, MK có giá trị | `""` , `password123` | Hiển thị "Vui lòng nhập email và mật khẩu" |
+| Mật khẩu bị rỗng | Email có giá trị, MK rỗng | `ba.nguyen@email.com` , `""` | Hiển thị "Vui lòng nhập email và mật khẩu" |
+| Cả hai rỗng | Cả hai rỗng | `""` , `""` | Hiển thị "Vui lòng nhập email và mật khẩu" |
 
 ### IDM — Tìm kiếm sách (REQ-03)
 
