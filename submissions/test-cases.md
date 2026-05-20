@@ -41,7 +41,7 @@
 | Phân biệt HOA/thường? | Chữ thường | `"flutter"` | Kết quả giống "Flutter" |
 | | Chữ HOA | `"FLUTTER"` | Kết quả giống "Flutter" |
 
-### IDM — Mượn sách (REQ-04, REQ-05)
+### IDM — Mượn sách (REQ-04)
 
 | Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
 |---|---|---|---|
@@ -53,6 +53,21 @@
 | | Hết hạn | MEM005 | Từ chối, thông báo lỗi |
 | Số sách đang mượn? | < 3 (BVA: 0, 1, 2) | MEM006 (0 sách) | Cho phép mượn |
 | | = 3 (BVA: giới hạn) | MEM đã mượn 3 sách | Từ chối, thông báo vượt giới hạn |
+
+## Decision Table – Mượn sách (REQ-04)
+
+| Điều kiện / Hành động | Rule 1 | Rule 2 | Rule 3 | Rule 4 | Rule 5 |
+|----------------------|--------|--------|--------|--------|--------|
+| **Điều kiện:** | | | | | |
+| Sách "Có sẵn"? | Y | N | Y | Y | Y |
+| Số sách đang mượn < 3? | Y | Y | N | Y | Y |
+| Tài khoản hoạt động? | Y | Y | Y | N | Y |
+| **Hành động:** | | | | | |
+| Mượn thành công | ✓ | | | | |
+| "Sách đã được mượn" | | ✓ | | | |
+| "Đã đạt giới hạn 3 sách" | | | ✓ | | |
+| "Tài khoản bị tạm ngưng/hết hạn" | | | | ✓ | |
+
 
 ### IDM – Trả sách (REQ-05)
 
