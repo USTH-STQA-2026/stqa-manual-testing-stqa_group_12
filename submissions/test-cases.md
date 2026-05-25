@@ -48,7 +48,7 @@
 | Trạng thái sách | Có sẵn | BOOK001 | Mượn thành công |
 | | Đã mượn | BOOK003 | "Sách đã được mượn" |
 | | Thất lạc | BOOK007 | "Sách không khả dụng (thất lạc)" |
-| Số sách đang mượn | 0, 1, 2 | Mượn thêm | Mượn thành công |
+| Số sách đang mượn | 0, 1, 2 | Mượn  | Mượn thành công |
 | | 3 (biên trên) | Mượn sách thứ 4 | "Đã đạt giới hạn 3 sách" |
 | Trạng thái tài khoản | Hoạt động | `ba.nguyen@email.com` | Mượn được |
 | | Tạm ngưng (Suspended) | `cu.le@email.com` | **"Tài khoản đang bị tạm ngưng"** |
@@ -75,13 +75,14 @@
 
 ### IDM – Trả sách (REQ-05)
 
-|Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
+| Đặc tính | Phân vùng | Giá trị đại diện | Kết quả mong đợi |
 |----------|-----------|------------------|------------------|
-| Trạng thái mượn của sách | Đang mượn (EP) | BR001 (Kiểm thử phần mềm) | Trả thành công, sách thành "Có sẵn" |
-| | Chưa mượn (EP) | BOOK001 (chưa ai mượn) | Thông báo lỗi "Không tìm thấy phiếu mượn" |
-| So sánh ngày trả với hạn trả | Trả đúng hạn (EP) | BR003 (hạn 15/10/2024) | Trả bình thường, không cảnh báo |
-| | Trả quá hạn (BVA - biên dưới) | Ngày trả = hạn trả + 1 ngày | Cảnh báo "Sách trả quá hạn" |
-| | Trả quá hạn (EP) | BR001 (hạn 15/09/2024) | Cảnh báo "Sách trả quá hạn" |
+| Sách có đang được mượn không? | Có (đang mượn) | BR001 (Kiểm thử phần mềm nhập môn) | Trả thành công, hiển thị thông báo "Trả sách thành công", sách chuyển từ "Đã mượn" → "Có sẵn", phiếu mượn có thêm dòng "Ngày trả" = ngày hiện tại (ngày người dùng click trả sách) |
+| | Không (chưa mượn) | Có sẵn + (VD: BOOK001 sau khi reset) | Không tìm thấy phiếu mượn để trả, hiển thị thông báo lỗi: "Không tìm thấy phiếu mượn" |
+| Ngày trả so với hạn trả | Trả đúng hạn | BR003 (hạn trả 15/10/2024, trả trước ngày 15/10/2024) | Trả thành công, sách chuyển thành "Có sẵn", KHÔNG có cảnh báo quá hạn |
+| | Trả quá hạn (BVA - biên dưới) | Hạn trả = 20/05/2026, trả vào ngày 21/05/2026 (quá hạn 1 ngày) | Trả thành công, sách chuyển thành "Có sẵn", VÀ hiển thị thêm cảnh báo: "Sách trả quá hạn" |
+| | Trả quá hạn (EP) | BR001 (hạn trả 15/09/2024, trả vào ngày hôm nay - đã quá hạn gần 2 năm) | Trả thành công, sách chuyển thành "Có sẵn", VÀ hiển thị thêm cảnh báo: "Sách trả quá hạn" |
+
 
 ### IDM – Xử lý sách quá hạn (REQ-06)
 
@@ -168,6 +169,19 @@
 <!-- Mỗi TC phải ánh xạ ngược về ít nhất 1 dòng trong bảng IDM ở Bước 1. -->
 
 | Mã TC | Mục tiêu kiểm thử | Tiền điều kiện | Bước thực hiện | Dữ liệu đầu vào | Kết quả mong đợi | REQ | Kỹ thuật |
+
+#### TC-01: Đăng nhập thành công - Thủ thư
+
+| Trường | Giá trị |
+|--------|---------|
+| **Mã TC** | TC-01 |
+| **Mục tiêu** | Kiểm tra đăng nhập với email và mật khẩu đúng |
+| **Tiền điều kiện** | Chưa đăng nhập, mở https://stqa.rbc.vn |
+| **Bước thực hiện** | 1. Nhập email: `librarian@library.com`<br>2. Nhập mật khẩu: `admin123`<br>3. Click "Đăng nhập" |
+| **Expected Result** | Chuyển sang trang chủ, AppBar hiển thị "Nguyễn Thủ Thư (Thủ thư)", xuất hiện 3 tab: Sách, Mượn/Trả, Thành viên |
+| **REQ** | REQ-01 |
+| **Kỹ thuật** | EP |
+
 |-------|-------------------|---------------|---------------|-----------------|------------------|-----|---------|
 | | | | | | | | |
 
