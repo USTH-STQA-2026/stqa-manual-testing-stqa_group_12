@@ -197,10 +197,6 @@
 
 ## Tổng hợp
 
-## Tổng hợp
-
-## Tổng hợp
-
 | Nhóm chức năng | Số TC | REQ phủ | Kỹ thuật IDM áp dụng |
 |---|---|---|---|
 | Đăng nhập | 4 | REQ-01 | EP |
