@@ -166,35 +166,34 @@
 ## Bước 2: Test Cases
 
 | Mã TC | Mục tiêu kiểm thử | Tiền điều kiện | Bước thực hiện | Dữ liệu đầu vào | Kết quả mong đợi | REQ | Kỹ thuật |
-|-------|-------------------|----------------|----------------|-----------------|------------------|-----|----------|
-| TC-01 | Đăng nhập thành công - Thủ thư | Chưa đăng nhập, mở https://stqa.rbc.vn/ | 1. Nhập email: `librarian@library.com`<br>2. Nhập mật khẩu: `admin123`<br>3. Click "Đăng nhập" | Email = `librarian@library.com`, Mật khẩu = `admin123` | Chuyển sang trang chủ, AppBar hiển thị "Nguyễn Thủ Thư (Thủ thư)", xuất hiện 3 tab: Sách, Mượn/Trả, Thành viên | REQ-01 | EP |
-| TC-02 | Đăng nhập thất bại - Sai email | Chưa đăng nhập | 1. Nhập email: `sai@email.com`<br>2. Nhập mật khẩu: `admin123`<br>3. Click "Đăng nhập" | Email = `sai@email.com`, Mật khẩu = `admin123` | Ở lại màn hình đăng nhập, hiển thị "Không tìm thấy thành viên" | REQ-01 | EP |
-| TC-03 | Đăng nhập thất bại - Sai mật khẩu | Chưa đăng nhập | 1. Nhập email: `librarian@library.com`<br>2. Nhập mật khẩu: `sai123`<br>3. Click "Đăng nhập" | Email = `librarian@library.com`, Mật khẩu = `sai123` | Ở lại màn hình đăng nhập, hiển thị "Mật khẩu không đúng" | REQ-01 | EP |
-| TC-04 | Đăng nhập thất bại - Bỏ trống email và mật khẩu | Chưa đăng nhập | 1. Để trống email<br>2. Để trống mật khẩu<br>3. Click "Đăng nhập" | Email = `""`, Mật khẩu = `""` | Hiển thị "Vui lòng nhập email và mật khẩu" | REQ-01 | EP |
-| TC-05 | Xem danh sách sách | Đã đăng nhập | Vào tab "Sách" | - | Hiển thị 20 sách (BOOK001-BOOK020) với các cột: Tên sách, Tác giả, Thể loại, Năm XB, Trạng thái | REQ-02 | EP |
-| TC-06 | Tìm kiếm theo tên - Có kết quả | Đã đăng nhập, đang ở tab Sách | 1. Gõ "Flutter" vào ô tìm kiếm<br>2. Nhấn Enter | Từ khóa = "Flutter" | Hiển thị 1 dòng: "Lập trình Flutter cơ bản" | REQ-03 | EP |
-| TC-07 | Tìm kiếm - Không có kết quả | Đã đăng nhập, đang ở tab Sách | 1. Gõ "xyzxyz123" vào ô tìm kiếm<br>2. Nhấn Enter | Từ khóa = "xyzxyz123" | Hiển thị "Không tìm thấy sách nào" | REQ-03 | EP |
-| TC-08 | Tìm kiếm không phân biệt hoa/thường (BVA) | Đã đăng nhập, đang ở tab Sách | 1. Gõ "flutter" (chữ thường) vào ô tìm kiếm<br>2. Nhấn Enter | Từ khóa = "flutter" | Kết quả giống hệt TC-06 (vẫn ra sách Flutter) | REQ-03 | BVA |
-| TC-09 | Lọc theo thể loại | Đã đăng nhập, đang ở tab Sách | Chọn "Văn học" từ dropdown lọc | Thể loại = "Văn học" | Chỉ hiển thị BOOK019, BOOK020 | REQ-03 | EP |
-| TC-10 | Lọc theo thể loại - Chữ thường (BVA) | Đã đăng nhập, đang ở tab Sách | 1. Gõ "văn học" (chữ thường) vào ô lọc<br>2. Nhấn Enter | Thể loại = "văn học" | Kết quả giống hệt TC-09 (chỉ hiển thị BOOK019, BOOK020) | REQ-03 | BVA |
-| TC-11 | Kết hợp lọc và tìm kiếm - Lọc Văn học + Tìm "Flutter" | Đã đăng nhập, đang ở tab Sách | 1. Chọn thể loại "Văn học"<br>2. Gõ "Flutter" vào ô tìm kiếm<br>3. Nhấn Enter | Thể loại = "Văn học", Từ khóa = "Flutter" | Không hiển thị sách nào, báo "Không tìm thấy sách" | REQ-03 | EP |
-| TC-12 | Kết hợp lọc và tìm kiếm - Lọc Văn học + Tìm "Văn" | Đã đăng nhập, đang ở tab Sách | 1. Chọn thể loại "Văn học"<br>2. Gõ "Văn" vào ô tìm kiếm<br>3. Nhấn Enter | Thể loại = "Văn học", Từ khóa = "Văn" | Hiển thị BOOK019: "Văn học Việt Nam đại cương" | REQ-03 | EP |
-| TC-13 | Mượn sách thành công | Đăng nhập `ba.nguyen@email.com`, BOOK001 "Có sẵn", đang mượn 1 sách | 1. Vào tab Sách<br>2. Tìm BOOK001<br>3. Click "Mượn"<br>4. Click "Xác nhận" | Sách = BOOK001, Tài khoản = `ba.nguyen@email.com` | "Mượn sách thành công", BOOK001 thành "Đang mượn", số sách mượn tăng từ 1 lên 2 | REQ-04 | EP |
-| TC-14 | Mượn sách thất bại - Sách đã mượn | Đăng nhập `ba.nguyen@email.com`, BOOK003 đang "Đang mượn" | Tìm BOOK003, click "Mượn" | Sách = BOOK003 | "Sách đã được mượn", trạng thái sách vẫn là "Đang mượn" | REQ-04 | EP |
-| TC-15 | Mượn sách thất bại - Giới hạn 3 sách (BVA) | Đăng nhập `ba.nguyen@email.com`, đang mượn đúng 3 sách | 1. Tìm sách thứ 4 "Có sẵn"<br>2. Click "Mượn"<br>3. Click "Xác nhận" | Số sách đang mượn = 3 | Không thể mượn, báo "Đã đạt giới hạn 3 sách" | REQ-04 | BVA |
-| TC-16 | Mượn sách thất bại - Tài khoản tạm ngưng | Đăng nhập `cu.le@email.com` (Tạm ngưng) | Mượn bất kỳ sách "Có sẵn" | Tài khoản = `cu.le@email.com` | "Tài khoản đang bị tạm ngưng" | REQ-04 | EP |
-| TC-17 | Mượn sách thất bại - Thẻ hết hạn | Đăng nhập `binh.pham@email.com` (Hết hạn) | Mượn bất kỳ sách "Có sẵn" | Tài khoản = `binh.pham@email.com` | "Thẻ thư viện đã hết hạn" | REQ-04 | EP |
-| TC-18 | Trả sách thành công (đúng hạn) | Đăng nhập Thủ thư, có BR003 (hạn 15/10/2024), ngày hiện tại < 15/10/2024 | 1. Vào tab "Mượn/Trả"<br>2. Tìm BR003<br>3. Click "Trả sách" | Phiếu = BR003 | "Trả sách thành công", sách thành "Có sẵn", không có cảnh báo quá hạn | REQ-05 | EP |
-| TC-19 | Trả sách quá hạn - Kiểm tra cảnh báo | Đăng nhập Thủ thư, có BR001 (hạn 15/09/2024) | 1. Vào tab "Mượn/Trả"<br>2. Tìm BR001<br>3. Click "Trả sách" | Phiếu = BR001 | Trả thành công + hiển thị cảnh báo "Sách trả quá hạn" | REQ-05 | BVA |
-| TC-20 | Trả sách thất bại - Sách chưa được mượn | Đăng nhập Thủ thư, BOOK001 đang "Có sẵn" | Vào tab "Mượn/Trả", tìm phiếu mượn của BOOK001 | Sách = BOOK001 | Không có phiếu mượn, không có nút "Trả sách" | REQ-05 | EP |
-| TC-21 | Trả sách quá hạn (BVA) | Có phiếu mượn quá hạn (BR001) | Trả BR001 | Ngày trả > hạn trả | Trả thành công + hiển thị "Sách trả quá hạn" | REQ-05 | BVA |
-| TC-22 | Kiểm tra quá hạn - Lần đầu | Đăng nhập Thủ thư, có BR001 quá hạn | 1. Vào tab "Mượn/Trả"<br>2. Click "Kiểm tra quá hạn" lần đầu | Quyền = Thủ thư | Phát hiện và đánh dấu 2 phiếu quá hạn | REQ-06 | EP |
-| TC-23 | Kiểm tra quá hạn - Lần thứ hai | Đã nhấn "Kiểm tra quá hạn" ít nhất 1 lần | Click "Kiểm tra quá hạn" lần thứ hai | Quyền = Thủ thư | Vẫn phải phát hiện và đánh dấu 2 phiếu quá hạn | REQ-06 | EP |
-| TC-24 | Thêm thành viên thất bại - Email hợp lệ bị từ chối | Đăng nhập Thủ thư | 1. Vào tab "Thành viên"<br>2. Click "Thêm thành viên"<br>3. Nhập Email: `vana@email.com`<br>4. Click "Lưu" | Email = `vana@email.com` | Thêm thành công (vì email hợp lệ) | REQ-07 | EP |
-| TC-25 | Thêm thành viên - Email không hợp lệ vẫn tạo được | Đăng nhập Thủ thư | 1. Vào tab "Thành viên"<br>2. Click "Thêm thành viên"<br>3. Nhập Email: `vana@email`<br>4. Click "Lưu" | Email = `vana@email` | Báo lỗi "Email không hợp lệ", không tạo được | REQ-07 | BVA |
-| TC-26 | Thêm thành viên thất bại - Email trùng | Đăng nhập Thủ thư | 1. Vào tab "Thành viên"<br>2. Click "Thêm thành viên"<br>3. Nhập Email: `ba.nguyen@email.com`<br>4. Click "Lưu" | Email = `ba.nguyen@email.com` | "Email đã tồn tại" | REQ-07 | EP |
-| TC-27 | Thủ thư xem tất cả phiếu | Đăng nhập Thủ thư | Vào tab "Mượn/Trả" | Quyền = Thủ thư | Hiển thị 5 phiếu: BR001, BR002, BR003, BR004, BR005 | REQ-08 | EP |
-| TC-28 | Thành viên chỉ xem phiếu của mình | Đăng nhập `ba.nguyen@email.com` | Vào tab "Mượn/Trả" | Quyền = Thành viên (MEM002) | Chỉ hiển thị BR001, BR004 (phiếu của MEM002) | REQ-08 | EP |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| TC-01 | Đăng nhập thành công - Thủ thư | Chưa đăng nhập, mở hệ thống | 1. Nhập email librarian@library.com  2. Nhập mật khẩu admin123  3. Click "Đăng nhập" | Email = librarian@library.com, Password = admin123 | Chuyển sang trang chủ, hiển thị tab Sách, Mượn/Trả, Thành viên | REQ-01 | EP |
+| TC-02 | Đăng nhập thất bại - Sai email | Chưa đăng nhập | 1. Nhập email sai@email.com  2. Nhập mật khẩu admin123  3. Click "Đăng nhập" | Email = sai@email.com | Hiển thị "Không tìm thấy thành viên" | REQ-01 | EP |
+| TC-03 | Đăng nhập thất bại - Sai mật khẩu | Chưa đăng nhập | 1. Nhập email librarian@library.com  2. Nhập mật khẩu sai123  3. Click "Đăng nhập" | Password = sai123 | Hiển thị "Mật khẩu không đúng" | REQ-01 | EP |
+| TC-04 | Đăng nhập thất bại - Để trống email và mật khẩu | Chưa đăng nhập | 1. Để trống email  2. Để trống mật khẩu  3. Click "Đăng nhập" | Email = "", Password = "" | Hiển thị "Vui lòng nhập email và mật khẩu" | REQ-01 | EP |
+| TC-05 | Xem danh sách sách | Đã đăng nhập | Vào tab "Sách" | - | Hiển thị danh sách 20 sách với đầy đủ thông tin | REQ-02 | EP |
+| TC-06 | Tìm kiếm sách - Có kết quả | Đã đăng nhập, đang ở tab Sách | 1. Nhập "Flutter" vào ô tìm kiếm  2. Nhấn Enter | Keyword = Flutter | Hiển thị sách "Lập trình Flutter cơ bản" | REQ-03 | EP |
+| TC-07 | Tìm kiếm sách - Không có kết quả | Đã đăng nhập, đang ở tab Sách | 1. Nhập "xyzxyz123" vào ô tìm kiếm  2. Nhấn Enter | Keyword = xyzxyz123 | Hiển thị "Không tìm thấy sách nào" | REQ-03 | EP |
+| TC-08 | Tìm kiếm không phân biệt chữ hoa/thường | Đã đăng nhập, đang ở tab Sách | 1. Nhập "flutter"  2. Nhấn Enter | Keyword = flutter | Kết quả giống TC-06 | REQ-03 | EP |
+| TC-09 | Lọc sách theo thể loại | Đã đăng nhập, đang ở tab Sách | Chọn thể loại "Văn học" | Category = Văn học | Chỉ hiển thị BOOK019 và BOOK020 | REQ-03 | EP |
+| TC-10 | Lọc thể loại không phân biệt hoa/thường | Đã đăng nhập, đang ở tab Sách | 1. Nhập "văn học" vào bộ lọc  2. Nhấn Enter | Category = văn học | Kết quả giống TC-09 | REQ-03 | EP |
+| TC-11 | Kết hợp lọc và tìm kiếm - Không có kết quả | Đã đăng nhập, đang ở tab Sách | 1. Chọn thể loại "Văn học"  2. Nhập "Flutter"  3. Nhấn Enter | Category = Văn học, Keyword = Flutter | Hiển thị "Không tìm thấy sách" | REQ-03 | EP |
+| TC-12 | Kết hợp lọc và tìm kiếm - Có kết quả | Đã đăng nhập, đang ở tab Sách | 1. Chọn thể loại "Văn học"  2. Nhập "Văn"  3. Nhấn Enter | Category = Văn học, Keyword = Văn | Hiển thị BOOK019 "Văn học Việt Nam đại cương" | REQ-03 | EP |
+| TC-13 | Mượn sách thành công | Đăng nhập bằng tài khoản thành viên hợp lệ | 1. Tìm BOOK001  2. Click "Mượn"  3. Click "Xác nhận" | Book = BOOK001 | Hiển thị "Mượn sách thành công", trạng thái sách đổi thành "Đang mượn" | REQ-04 | EP |
+| TC-14 | Mượn sách thất bại - Sách đã được mượn | Đăng nhập thành viên | 1. Tìm BOOK003  2. Click "Mượn" | Book = BOOK003 | Hiển thị "Sách đã được mượn" | REQ-04 | EP |
+| TC-15 | Mượn sách thất bại - Đạt giới hạn 3 sách | Thành viên đang mượn đúng 3 sách | 1. Tìm sách còn trống  2. Click "Mượn" | Borrowed books = 3 | Hiển thị "Đã đạt giới hạn 3 sách" | REQ-04 | BVA |
+| TC-16 | Mượn sách thất bại - Tài khoản bị tạm ngưng | Đăng nhập tài khoản tạm ngưng | Thực hiện mượn sách | User status = Suspended | Hiển thị "Tài khoản đang bị tạm ngưng" | REQ-04 | EP |
+| TC-17 | Mượn sách thất bại - Thẻ hết hạn | Đăng nhập tài khoản hết hạn | Thực hiện mượn sách | Card status = Expired | Hiển thị "Thẻ thư viện đã hết hạn" | REQ-04 | EP |
+| TC-18 | Trả sách thành công - Đúng hạn | Có phiếu mượn còn hạn | 1. Vào tab "Mượn/Trả"  2. Chọn BR003  3. Click "Trả sách" | Borrow record = BR003 | Hiển thị "Trả sách thành công" | REQ-05 | EP |
+| TC-19 | Trả sách quá hạn | Có phiếu mượn đã quá hạn | 1. Vào tab "Mượn/Trả"  2. Chọn BR001  3. Click "Trả sách" | Borrow record = BR001 | Hiển thị cảnh báo "Sách trả quá hạn" | REQ-05 | BVA |
+| TC-20 | Trả sách thất bại - Sách chưa được mượn | Sách đang ở trạng thái "Có sẵn" | Tìm phiếu mượn của BOOK001 | Book = BOOK001 | Không hiển thị nút "Trả sách" | REQ-05 | EP |
+| TC-21 | Kiểm tra sách quá hạn lần đầu | Đăng nhập Thủ thư | Click "Kiểm tra quá hạn" | Role = Librarian | Hệ thống đánh dấu các phiếu quá hạn | REQ-06 | EP |
+| TC-22 | Kiểm tra sách quá hạn lần thứ hai | Đã kiểm tra quá hạn ít nhất 1 lần | Click "Kiểm tra quá hạn" lần nữa | Role = Librarian | Hệ thống vẫn đánh dấu đúng các phiếu quá hạn | REQ-06 | EP |
+| TC-23 | Thêm thành viên thành công - Email hợp lệ | Đăng nhập Thủ thư | 1. Vào tab "Thành viên"  2. Click "Thêm thành viên"  3. Nhập vana@email.com  4. Click "Lưu" | Email = vana@email.com | Thêm thành viên thành công | REQ-07 | EP |
+| TC-24 | Thêm thành viên thất bại - Email không hợp lệ | Đăng nhập Thủ thư | 1. Vào tab "Thành viên"  2. Click "Thêm thành viên"  3. Nhập vana@email  4. Click "Lưu" | Email = vana@email | Hiển thị "Email không hợp lệ" | REQ-07 | BVA |
+| TC-25 | Thêm thành viên thất bại - Email trùng | Đăng nhập Thủ thư | 1. Vào tab "Thành viên"  2. Click "Thêm thành viên"  3. Nhập ba.nguyen@email.com  4. Click "Lưu" | Email = ba.nguyen@email.com | Hiển thị "Email đã tồn tại" | REQ-07 | EP |
+| TC-26 | Thủ thư xem tất cả phiếu mượn | Đăng nhập Thủ thư | Vào tab "Mượn/Trả" | Role = Librarian | Hiển thị toàn bộ phiếu mượn | REQ-08 | EP |
+| TC-27 | Thành viên chỉ xem phiếu của mình | Đăng nhập tài khoản thành viên | Vào tab "Mượn/Trả" | Role = Member | Chỉ hiển thị phiếu mượn của chính thành viên đó | REQ-08 | EP |
 
 ## Tổng hợp
 
