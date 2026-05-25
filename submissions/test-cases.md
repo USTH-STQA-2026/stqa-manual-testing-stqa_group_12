@@ -179,21 +179,34 @@
 | TC-10 | Lọc sách theo thể loại không phân biệt chữ hoa/thường | Người dùng đã đăng nhập và đang ở tab “Sách” | 1. Nhập `văn học` vào bộ lọc thể loại <br> 2. Nhấn Enter | Category = văn học | Hệ thống hiển thị kết quả giống TC-09 | REQ-03 | EP |
 | TC-11 | Kết hợp tìm kiếm và lọc không có kết quả | Người dùng đã đăng nhập và đang ở tab “Sách” | 1. Chọn thể loại “Văn học” <br> 2. Nhập từ khóa `Flutter` <br> 3. Nhấn Enter | Category = Văn học <br> Keyword = Flutter | Hiển thị thông báo “Không tìm thấy sách” | REQ-03 | EP |
 | TC-12 | Kết hợp tìm kiếm và lọc có kết quả | Người dùng đã đăng nhập và đang ở tab “Sách” | 1. Chọn thể loại “Văn học” <br> 2. Nhập từ khóa `đại cương` <br> 3. Nhấn Enter | Category = Văn học <br> Keyword = đại cương | Hiển thị BOOK019 “Văn học Việt Nam đại cương” | REQ-03 | EP |
-| TC-13 | Mượn sách thành công với tài khoản thành viên hợp lệ | Thành viên MEM002 đã đăng nhập; BOOK001 đang ở trạng thái “Có sẵn” | 1. Tìm BOOK001 <br> 2. Click “Mượn” <br> 3. Click “Xác nhận” | Member = MEM002 <br> Book = BOOK001 | Hiển thị thông báo “Mượn sách thành công”; trạng thái BOOK001 chuyển thành “Đang mượn” | REQ-04 | EP |
-| TC-14 | Mượn sách thất bại khi sách đã được mượn | Thành viên đã đăng nhập; BOOK003 đang ở trạng thái “Đang mượn” | 1. Tìm BOOK003 <br> 2. Click “Mượn” | Book = BOOK003 | Hiển thị thông báo “Sách đã được mượn” | REQ-04 | EP |
-| TC-15 | Mượn sách thất bại khi đạt giới hạn tối đa 3 sách | Thành viên MEM002 đang mượn đúng 3 sách | 1. Tìm một sách còn trạng thái “Có sẵn” <br> 2. Click “Mượn” | Member = MEM002 <br> Borrowed books = 3 | Hiển thị thông báo “Đã đạt giới hạn 3 sách” | REQ-04 | BVA |
-| TC-16 | Mượn sách thất bại với tài khoản bị tạm ngưng | Thành viên MEM005 có trạng thái “Suspended” đã đăng nhập | 1. Tìm sách còn trạng thái “Có sẵn” <br> 2. Click “Mượn” | User status = Suspended | Hiển thị thông báo “Tài khoản đang bị tạm ngưng” | REQ-04 | EP |
-| TC-17 | Mượn sách thất bại với thẻ thư viện hết hạn | Thành viên MEM006 có trạng thái “Expired” đã đăng nhập | 1. Tìm sách còn trạng thái “Có sẵn” <br> 2. Click “Mượn” | Card status = Expired | Hiển thị thông báo “Thẻ thư viện đã hết hạn” | REQ-04 | EP |
+| TC-13 | Mượn sách thành công với tài khoản thành viên hợp lệ | Thành viên MEM002 đã đăng nhập; BOOK001 đang ở trạng thái “Có sẵn” | 1. Tìm BOOK001 <br> 2. Click “Mượn” <br> 3. Click “Xác nhận” | Member = MEM002 <br> Book = BOOK001 | Hiển thị thông báo “Mượn sách thành công”; trạng thái BOOK001 chuyển thành “Đang mượn” | REQ-04 | DT |
+| TC-14 | Mượn sách thất bại khi sách đã được mượn | Thành viên đã đăng nhập; BOOK003 đang ở trạng thái “Đang mượn” | 1. Tìm BOOK003 <br> 2. Click “Mượn” | Book = BOOK003 | Hiển thị thông báo “Sách đã được mượn” | REQ-04 | DT |
+| TC-15 | Mượn sách thất bại khi đạt giới hạn tối đa 3 sách | Thành viên MEM002 đang mượn đúng 3 sách | 1. Tìm một sách còn trạng thái “Có sẵn” <br> 2. Click “Mượn” | Member = MEM002 <br> Borrowed books = 3 | Hiển thị thông báo “Đã đạt giới hạn 3 sách” | REQ-04 | BVA, DT |
+| TC-16 | Mượn sách thất bại với tài khoản bị tạm ngưng | Thành viên MEM005 có trạng thái “Suspended” đã đăng nhập | 1. Tìm sách còn trạng thái “Có sẵn” <br> 2. Click “Mượn” | User status = Suspended | Hiển thị thông báo “Tài khoản đang bị tạm ngưng” | REQ-04 | DT |
+| TC-17 | Mượn sách thất bại với thẻ thư viện hết hạn | Thành viên MEM006 có trạng thái “Expired” đã đăng nhập | 1. Tìm sách còn trạng thái “Có sẵn” <br> 2. Click “Mượn” | Card status = Expired | Hiển thị thông báo “Thẻ thư viện đã hết hạn” | REQ-04 | DT |
 | TC-18 | Trả sách thành công khi chưa quá hạn | Phiếu mượn BR003 đang ở trạng thái chưa quá hạn | 1. Vào tab “Mượn/Trả” <br> 2. Chọn phiếu BR003 <br> 3. Click “Trả sách” | Borrow Record = BR003 | Hiển thị thông báo “Trả sách thành công”; trạng thái phiếu mượn chuyển thành “Returned” | REQ-05 | EP |
 | TC-19 | Trả sách khi phiếu mượn đã quá hạn | Phiếu mượn BR001 đang ở trạng thái quá hạn | 1. Vào tab “Mượn/Trả” <br> 2. Chọn phiếu BR001 <br> 3. Click “Trả sách” | Borrow Record = BR001 | Hiển thị cảnh báo “Sách trả quá hạn” và hoàn tất thao tác trả sách | REQ-05 | BVA |
 | TC-20 | Không hiển thị chức năng trả sách với sách chưa được mượn | BOOK005 đang ở trạng thái “Có sẵn” | 1. Tìm thông tin mượn của BOOK005 <br> 2. Kiểm tra thao tác trả sách | Book = BOOK005 | Hệ thống không hiển thị nút “Trả sách” | REQ-05 | EP |
 | TC-21 | Kiểm tra và đánh dấu các phiếu mượn quá hạn lần đầu | Người dùng đăng nhập bằng tài khoản Thủ thư | Click “Kiểm tra quá hạn” | Role = Librarian | Hệ thống đánh dấu chính xác các phiếu quá hạn như BR001 và BR004 với trạng thái “Overdue” | REQ-06 | EP |
 | TC-22 | Kiểm tra quá hạn nhiều lần không tạo dữ liệu sai | Các phiếu quá hạn đã được đánh dấu trước đó | Click “Kiểm tra quá hạn” lần thứ hai | Role = Librarian | Hệ thống vẫn giữ đúng trạng thái quá hạn, không tạo duplicate hoặc thay đổi dữ liệu sai | REQ-06 | EP |
-| TC-23 | Thêm thành viên mới thành công với email hợp lệ | Người dùng đăng nhập bằng tài khoản Thủ thư | 1. Vào tab “Thành viên” <br> 2. Click “Thêm thành viên” <br> 3. Nhập `van.a@email.com` <br> 4. Click “Lưu” | Email = van.a@email.com | Hệ thống thêm thành viên mới thành công | REQ-07 | EP |
-| TC-24 | Thêm thành viên thất bại với email không hợp lệ | Người dùng đăng nhập bằng tài khoản Thủ thư | 1. Vào tab “Thành viên” <br> 2. Click “Thêm thành viên” <br> 3. Nhập `van.a@email` <br> 4. Click “Lưu” | Email = van.a@email | Hiển thị thông báo “Email không hợp lệ” | REQ-07 | BVA |
+| TC-23 | Thêm thành viên mới thành công với email hợp lệ | Người dùng đăng nhập bằng tài khoản Thủ thư | 1. Vào tab “Thành viên” <br> 2. Click “Thêm thành viên” <br> 3. Nhập `newmember@email.com` <br> 4. Click “Lưu” | Email = newmember@email.com | Hệ thống thêm thành viên mới thành công | REQ-07 | EP |
+| TC-24 | Thêm thành viên thất bại với email không hợp lệ | Người dùng đăng nhập bằng tài khoản Thủ thư | 1. Vào tab “Thành viên” <br> 2. Click “Thêm thành viên” <br> 3. Nhập `newmember@email` <br> 4. Click “Lưu” | Email = newmember@email | Hiển thị thông báo “Email không hợp lệ” | REQ-07 | BVA |
 | TC-25 | Thêm thành viên thất bại với email đã tồn tại | Người dùng đăng nhập bằng tài khoản Thủ thư | 1. Vào tab “Thành viên” <br> 2. Click “Thêm thành viên” <br> 3. Nhập email đã tồn tại trong hệ thống <br> 4. Click “Lưu” | Email = ba.nguyen@email.com | Hiển thị thông báo “Email đã tồn tại” | REQ-07 | EP |
 | TC-26 | Thủ thư xem toàn bộ phiếu mượn trong hệ thống | Người dùng đăng nhập bằng tài khoản Thủ thư | Vào tab “Mượn/Trả” | Role = Librarian | Hệ thống hiển thị toàn bộ phiếu mượn của tất cả thành viên | REQ-08 | EP |
 | TC-27 | Thành viên chỉ được xem phiếu mượn của chính mình | Người dùng đăng nhập bằng tài khoản Thành viên | Vào tab “Mượn/Trả” | Role = Member | Hệ thống chỉ hiển thị phiếu mượn thuộc tài khoản đang đăng nhập | REQ-08 | EP |
+
+## Decision Table – Borrow Book Function (REQ-04)
+
+| Conditions / Rules | R1 | R2 | R3 | R4 | R5 |
+|---|---|---|---|---|---|
+| C1. Account active | Y | N | Y | Y | Y |
+| C2. Card not expired | Y | Y | N | Y | Y |
+| C3. Borrowed books < 3 | Y | Y | Y | N | Y |
+| C4. Book available | Y | Y | Y | Y | N |
+|  |  |  |  |  |  |
+| Actions |  |  |  |  |  |
+| A1. Allow borrowing | Y | N | N | N | N |
+| A2. Reject borrowing | N | Y | Y | Y | Y |
 
 ## Tổng hợp
 
@@ -202,12 +215,12 @@
 | Đăng nhập | 4 | REQ-01 | EP |
 | Xem danh sách sách | 1 | REQ-02 | EP |
 | Tìm kiếm và lọc sách | 7 | REQ-03 | EP |
-| Mượn sách | 5 | REQ-04 | EP, BVA |
+| Mượn sách | 5 | REQ-04 | DT, BVA |
 | Trả sách | 3 | REQ-05 | EP, BVA |
 | Xử lý sách quá hạn | 2 | REQ-06 | EP |
 | Quản lý thành viên | 3 | REQ-07 | EP, BVA |
 | Tra cứu phiếu mượn | 2 | REQ-08 | EP |
-| **Tổng** | **27** | **REQ-01 → REQ-08** | **EP, BVA** |
+| **Tổng** | **27** | **REQ-01 → REQ-08** | **EP, BVA, DT** |
 
 ### SUGG-001: Gợi ý thêm yêu cầu trim khoảng trắng vào SRS
 
