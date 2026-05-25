@@ -5,10 +5,10 @@
 
 | Thông tin | |
 |---|---|
-| **Nhóm** | `<!-- Tên nhóm -->` |
-| **Ngày thực thi** | `<!-- DD/MM/YYYY -->` |
+| **Nhóm** | Nhóm 12 |
+| **Ngày thực thi** |  |
 | **Trình duyệt** | Chrome `<!-- version -->` |
-| **Hệ điều hành** | `<!-- Windows / macOS / Linux -->` |
+| **Hệ điều hành** | Window |
 
 ---
 
