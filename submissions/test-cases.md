@@ -199,17 +199,19 @@
 
 ## Tổng hợp
 
+## Tổng hợp
+
 | Nhóm chức năng | Số TC | REQ phủ | Kỹ thuật IDM áp dụng |
-|----------------|-------|---------|----------------------|
+|---|---|---|---|
 | Đăng nhập | 4 | REQ-01 | EP |
 | Xem danh sách sách | 1 | REQ-02 | EP |
-| Tìm kiếm và lọc sách | 7 | REQ-03 | EP, BVA |
-| Mượn sách | 5 | REQ-04 | EP, BVA, Decision Table |
-| Trả sách | 4 | REQ-05 | EP, BVA |
+| Tìm kiếm và lọc sách | 7 | REQ-03 | EP |
+| Mượn sách | 5 | REQ-04 | EP, BVA |
+| Trả sách | 3 | REQ-05 | EP, BVA |
 | Xử lý sách quá hạn | 2 | REQ-06 | EP |
 | Quản lý thành viên | 3 | REQ-07 | EP, BVA |
-| Tra cứu phiếu mượn | 2 | REQ-08 | EP, BVA |
-| **Tổng** | **28** | **REQ-01 → REQ-08** | **EP, BVA, Decision Table** |
+| Tra cứu phiếu mượn | 2 | REQ-08 | EP |
+| **Tổng** | **27** | **REQ-01 → REQ-08** | **EP, BVA** |
 
 ### SUGG-001: Gợi ý thêm yêu cầu trim khoảng trắng vào SRS
 
