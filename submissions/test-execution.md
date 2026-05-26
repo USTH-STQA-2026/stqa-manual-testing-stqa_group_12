@@ -56,11 +56,11 @@
 | Metric | Value |
 |--------|-------|
 | Total Test Cases | 34 |
-| Pass | 19 |
-| Fail | 15 |
+| Pass | 20 |
+| Fail | 14 |
 | Blocked | 0 |
 | Not Run | 0 |
-| **Pass Rate** | **55.9%** |
+| **Pass Rate** | **58.8%** |
 
 ### Results by Function Group
 
@@ -68,10 +68,10 @@
 |----------------|----------|------|------|-----------|
 | Login (REQ-01) | 4 | 4 | 0 | 100% |
 | View Book List (REQ-02) | 1 | 1 | 0 | 100% |
-| Search & Filter Books (REQ-03) | 10 | 6 | 4 | 60% |
+| Search & Filter Books (REQ-03) | 10 | 7 | 3 | 70% |
 | Borrow Book (REQ-04) | 5 | 2 | 3 | 40% |
-| Return Book (REQ-05) | 4 | 2 | 2 | 50% |
+| Return Book (REQ-05) | 3 | 2 | 1 | 66.7% |
 | Overdue Handling (REQ-06) | 2 | 1 | 1 | 50% |
-| Member Management (REQ-07) | 8 | 2 | 6 | 25% |
+| Member Management (REQ-07) | 7 | 2 | 5 | 28.6% |
 | Borrow Record Lookup (REQ-08) | 2 | 1 | 1 | 50% |
-| **Total** | **34** | **19** | **15** | **55.9%** |
+| **Total** | **34** | **20** | **14** | **58.8%** |
