@@ -212,17 +212,17 @@
 
 ### Test case count by REQ
 
-| Function Group | TC Count | TC IDs | REQ Covered | IDM Techniques Applied |
-|----------------|----------|---------|-------------|------------------------|
-| Login | 4 | TC-01 → TC-04 | REQ-01 | EP |
-| View Book List | 1 | TC-05 | REQ-02 | EP |
-| Search & Filter Books | 10 | TC-06 → TC-12, TC-32 → TC-34 | REQ-03 | EP |
-| Borrow Book | 5 | TC-13 → TC-17 | REQ-04 | DT, BVA |
-| Return Book | 3 | TC-18 → TC-20 | REQ-05 | EP, BVA |
-| Overdue Handling | 2 | TC-21 → TC-22 | REQ-06 | EP |
-| Member Management | 7 | TC-23 → TC-25, TC-28 → TC-31 | REQ-07 | EP, BVA |
-| Borrow Record Lookup | 2 | TC-26 → TC-27 | REQ-08 | EP |
-| **Total** | **34** | **TC-01 → TC-34** | **REQ-01 → REQ-08** | **EP, BVA, DT** |
+| Function Group | TC Count | REQ Covered | IDM Techniques Applied |
+|----------------|----------|-------------|------------------------|
+| Login | 4 | REQ-01 | EP |
+| View Book List | 1 | REQ-02 | EP |
+| Search & Filter Books | 10 | REQ-03 | EP |
+| Borrow Book | 5 | REQ-04 | DT, BVA |
+| Return Book | 3 | REQ-05 | EP, BVA |
+| Overdue Handling | 2 | REQ-06 | EP |
+| Member Management | 7 | REQ-07 | EP, BVA |
+| Borrow Record Lookup | 2 | REQ-08 | EP |
+| **Total** | **34** | **REQ-01 → REQ-08** | **EP, BVA, DT** |
 
 ### SUGG-001: Gợi ý thêm yêu cầu trim khoảng trắng vào SRS
 
