@@ -25,7 +25,7 @@
 | Đặc tính (Characteristic) | Phân vùng (Block) | Giá trị đại diện (Value) | Kết quả mong đợi |
 |---|---|---|---|
 | Email có tồn tại trong DB? | Có | `librarian@library.com` | Đăng nhập thành công |
-| | Không | `noone@email.com` | Thông báo lỗi |
+| | Không | `nobody@test.com` | Thông báo lỗi |
 | Mật khẩu có đúng? | Đúng | `admin123` | Đăng nhập thành công |
 | | Sai | `wrongpass` | Thông báo lỗi |
 | Ô nhập có rỗng? | Không rỗng | (giá trị bất kỳ) | Xử lý bình thường |
