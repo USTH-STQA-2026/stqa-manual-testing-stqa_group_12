@@ -114,17 +114,17 @@
 | User role | Librarian (EP) | `librarian@library.com` | Sees and can access "Members" tab |
 | | Member (EP) | `ba.nguyen@email.com` | Member Does NOT see "Members" tab |
 | Email validation | Valid email (EP) | `user@domain.com` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Missing dot (BVA) | `user@domain` | System cannot create. System displays "Invalid email" |
-| | Missing @ (EP) | `userdomain.com` | System cannot create. System displays "Invalid email" |
-| | Empty email (EP) | `""` | System cannot create. System displays "Please enter email" |
-| Email duplicate | Not exists (EP) | `newuser@email.com` | System creates successful. System displays "Create succesfull. ID:MEM00X"|
-| | Already exists (EP) | `ba.nguyen@email.com` | Cannot create. System displays "Email already exists" |
-| Phone validation | Valid phone (EP) | `0123456789` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Invalid phone - letters (EP) | `abc` | System cannot create. Display "Invalid phone number" |
-| | Invalid phone - too short (BVA) | `123` | System cannot create. Display "Invalid phone number" |
-| | Empty phone (EP) | `""` | System cannot create. Display "Please enter phone number" |
-| Name validation | Valid name (EP) | `Nguyen Van A` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Empty name (EP) | `""` | System cannot create. Display "Please enter name" |
+| | Missing dot (BVA) | `user@domain` | System displays "Invalid email" |
+| | Missing @ (EP) | `userdomain.com` | System displays "Invalid email" |
+| | Empty email (EP) | `""` | System displays "Please enter email" |
+| Email duplicate | Not exists (EP) | `newuser@email.com` | System displays "Create succesfull. ID:MEM00X"|
+| | Already exists (EP) | `ba.nguyen@email.com` | System displays "Email already exists" |
+| Phone validation | Valid phone (EP) | `0123456789` | System displays "Create succesfull. ID:MEM00X" |
+| | Invalid phone - letters (EP) | `abc` | System displays "Invalid phone number" |
+| | Invalid phone - too short (BVA) | `123` | System displays "Invalid phone number" |
+| | Empty phone (EP) | `""` | System displays "Please enter phone number" |
+| Name validation | Valid name (EP) | `Nguyen Van A` | System displays "Create succesfull. ID:MEM00X" |
+| | Empty name (EP) | `""` | System displays "Please enter name" |
 
 ---
 
