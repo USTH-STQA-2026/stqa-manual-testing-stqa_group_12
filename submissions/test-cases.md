@@ -24,12 +24,14 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| Does email exist in DB? | Yes | `librarian@library.com` | Login successful |
-| | No | `nobody@test.com` | Error message |
-| Is password correct? | Correct | `admin123` | Login successful |
-| | Incorrect | `wrongpass` | Error message |
-| Are input fields empty? | Not empty | (any value) | Normal processing |
-| | Empty | `""` | Message "Please enter email and password" |
+| Email exists in the system? | Existing email (EP)| `librarian@library.com` | Login succeeds and the systems redirects the user to the homepage  |
+| | Non-existing email(EP) | `nobody@test.com` | System displays "Member not found" |
+| Password correctness | Correct password(EP) | `admin123` | Login succeds |
+| | Incorrect password(EP) | `wrongpassword` | System displays "Incorrect password|
+| Input fields | Both email and password provided (EP) | `librarian@library.com` / `admin123` | System processes login normally |
+| | Email and password empty (EP) | `""` / `""` | System displays "Please enter email and password" |
+| User role after successful login | Librarian account (EP) | `librarian@library.com` | AppBar displays user name and role: Librarian |
+| | Member account (EP) | `ba.nguyen@email.com` | AppBar displays user name and role: Member |
 
 ---
 
