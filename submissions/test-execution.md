@@ -73,5 +73,5 @@
 | Return Book (REQ-05) | 3 | 2 | 1 | 66.7% |
 | Overdue Handling (REQ-06) | 2 | 1 | 1 | 50% |
 | Member Management (REQ-07) | 7 | 2 | 5 | 28.6% |
-| Borrow Record Lookup (REQ-08) | 2 | 1 | 1 | 50% |
+| Borrow Record Lookup (REQ-08) | 2 | 1 | 1 | 50% | 
 | **Total** | **34** | **20** | **14** | **58.8%** |
