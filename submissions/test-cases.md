@@ -37,7 +37,7 @@
 
 ### IDM — Search & Filter Books (REQ-03)
 
-| Characteristic | Partition | Representative Value | Expected Result |
+| Characteristic | Partition | Value | Expected Result |
 |---|---|---|---|
 | Search keyword exists in book title? | Existing title keyword (EP) | `"Flutter"` | System displays books whose titles contain "Flutter" |
 | | Non-existing keyword (EP) | `"XYZ123"` | System displays "Book not found" |
@@ -52,15 +52,16 @@
 ### IDM — Borrow Book (REQ-04)
 
 | Characteristic | Partition | Value | Expected Result |
-|----------------|-----------|-------|-----------------|
-| Book status | Available | BOOK001 | Borrow successful |
-| | Borrowed | BOOK003 | "Book already borrowed" |
-| | Lost | BOOK007 | "Book not available (lost)" |
-| Number of books borrowed | 0, 1, 2 | Borrow more | Borrow successful |
-| | 3 (upper bound) | Borrow 4th book | "Reached limit of 3 books" |
-| Account status | Active | `ba.nguyen@email.com` | Can borrow |
-| | Suspended | `cu.le@email.com` | "Account is suspended" |
-| | Expired | `binh.pham@email.com` | "Library card has expired" |
+|---|---|---|---|
+| Book status | Available (EP) | `BOOK001` | Borrow request succeeds, a new borrow record is created, and book status changes to "Borrowed" |
+| | Borrowed (EP) | `BOOK003` | System rejects borrowing because the book is unavailable |
+| | Lost (EP) | `BOOK007` | System rejects borrowing because the book is not available |
+| Current borrow count | 0, 1, 2 books (EP) | Member borrows another available book | Borrow request succeeds |
+| | 3 books (BVA upper boundary) | Attempt to borrow a 4th book | System rejects borrowing because the maximum borrow limit is reached |
+| Member account status | Active (EP) | `ba.nguyen@email.com` | Borrow request succeeds |
+| | Suspended (EP) | `cu.le@email.com` | System rejects borrowing with the correct suspended-member reason |
+| | Expired (EP) | `binh.pham@email.com` | System rejects borrowing with the correct expired-member reason |
+| Borrow duration | 14-day borrowing period (BVA) | Borrow date = today | Due date is automatically set to borrow date + 14 days |
 
 ---
 
