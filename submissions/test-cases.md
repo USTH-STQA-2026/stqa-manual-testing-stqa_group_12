@@ -95,11 +95,15 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| User role | Librarian (EP) | `librarian@library.com` | Has "Check overdue" button |
-| | Member (EP) | `ba.nguyen@email.com` | Does not see "Check overdue" button |
-| Due date vs current date | Not overdue (EP) | BR003 | Not marked as overdue |
-| | Just overdue (BVA - boundary) | Due date = yesterday | Marked as "Overdue" |
-| | Overdue (EP) | BR001 | Marked as "Overdue" |
+| User role | Librarian (EP) | `librarian@library.com` | Has "Check overdue" button visible in Borrow/Return tab. Can click to check overdue records |
+| | Member (EP) | `ba.nguyen@email.com` | Does NOT have "Check overdue" button. Cannot access this function |
+| Due date vs current date | Not overdue (EP) | BR003 (due 15/10/2024, if today < 15/10/2024) | Not marked as overdue, status remains "Borrowed" |
+| | Overdue (BVA - boundary) | Due date = yesterday | After clicking "Check overdue": Marked as "Overdue" |
+| | Overdue (EP) | BR001 (due 15/09/2024) | After clicking "Check overdue": Marked as "Overdue" |
+| After clicking check button | Has overdue records | BR001 (overdue) | Displays message: "Updated X overdue records" (X = number of overdue records found) |
+| | No overdue records | All records have due date > today | Displays message: "No overdue records found". No status changes |
+| Multiple clicks | Click first time | BR001,BR003 overdue | Detects and marks 2 overdue records correctly |
+| | Click second time | Same overdue records still exist | Must still detect and mark the same overdue records. |
 
 ---
 
@@ -107,14 +111,20 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| User role | Librarian (EP) | `librarian@library.com` | Sees "Members" tab |
-| | Member (EP) | `ba.nguyen@email.com` | Does not see "Members" tab |
-| Email validation | Valid (EP) | `user@domain.com` | Creation successful |
-| | Missing dot (BVA) | `user@domain` | Error message "Invalid email" |
-| | Missing @ (EP) | `userdomain.com` | Error message "Invalid email" |
-| | Empty (EP) | `""` | Error message "Please enter email" |
-| Email duplicate? | Not exists (EP) | `user@domain.com` | Creation successful |
-| | Already exists (EP) | `ba.nguyen@email.com` | Error message "Email already exists" |
+| User role | Librarian (EP) | `librarian@library.com` | Sees and can access "Members" tab |
+| | Member (EP) | `ba.nguyen@email.com` | Does NOT see "Members" tab |
+| Email validation | Valid email (EP) | `user@domain.com` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
+| | Missing dot (BVA) | `user@domain` | Cannot create. System displays "Invalid email" |
+| | Missing @ (EP) | `userdomain.com` | Cannot create. System displays "Invalid email" |
+| | Empty email (EP) | `""` | Cannot create. System displays "Please enter email" |
+| Email duplicate | Not exists (EP) | `newuser@email.com` | System creates successful. System displays "Create succesfull. ID:MEM00X"|
+| | Already exists (EP) | `ba.nguyen@email.com` | Cannot create. System displays "Email already exists" |
+| Phone validation | Valid phone (EP) | `0123456789` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
+| | Invalid phone - letters (EP) | `abc` | Cannot create. Display "Invalid phone number" |
+| | Invalid phone - too short (BVA) | `123` | System cannot create. Display "Invalid phone number" |
+| | Empty phone (EP) | `""` | System cannot create. Display "Please enter phone number" |
+| Name validation | Valid name (EP) | `Nguyen Van A` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
+| | Empty name (EP) | `""` | Cannot create. Display "Please enter name" |
 
 ---
 
@@ -122,11 +132,15 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| User role | Librarian (EP) | `librarian@library.com` | Can view all borrow records (5 records) |
-| | Member (EP) | `ba.nguyen@email.com` | Can only view own records (BR001, BR004) |
-| Member ID search (Librarian) | ID exists (EP) | `MEM002` | Display MEM002's records |
-| | ID does not exist (EP) | `ABC002` | Error message "Member not found" |
-| | Empty ID (BVA) | `""` | Error message "Please enter member ID (e.g., MEM001)" |
+| User role | Librarian (EP) | `librarian@library.com` | Can view ALL borrow records (5 records: BR001, BR002, BR003, BR004, BR005) |
+| | Member (EP) | `ba.nguyen@email.com` | Member can ONLY view their own records (BR001, BR004). Cannot see other members' records |
+| Member ID search (Librarian) | ID exists (EP) | `MEM002` | System displays MEM002's records: BR001 and BR004 |
+| | ID does not exist (EP) | `ABC999` | System displays error: "Member not found" |
+| | Empty ID (BVA) | `""` | System displays error: "Please enter member ID (e.g., MEM001)" |
+| Permission (Member) | Member searches other ID | MEM002 searches for MEM003 | System displays error: "You do not have permission to view other member's borrow records" |
+| Real-time update | After borrow | MEM002 borrows new book | New record appears immediately. System displays their borrow records |
+| | After return | MEM002 returns a book | Record status updates immediately with return date. Book will modify to "Available" |
+
 
 ## Test Design Technique Explanation
 
