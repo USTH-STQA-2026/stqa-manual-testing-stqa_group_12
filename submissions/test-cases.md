@@ -35,15 +35,17 @@
 
 ---
 
-### IDM — Search Books (REQ-03)
+### IDM — Search & Filter Books (REQ-03)
 
-| Characteristic | Partition | Value | Expected Result |
-|----------------|-----------|-------|-----------------|
-| Does keyword exist in DB? | Yes (book title) | `"Flutter"` | Display books containing "Flutter" |
-| | Yes (author name) | `"Nguyen"` | Display books by author Nguyen |
-| | No | `"XYZ123"` | Empty list |
-| Case-sensitive? | Lowercase | `"flutter"` | Same result as "Flutter" |
-| | Uppercase | `"FLUTTER"` | Same result as "Flutter" |
+| Characteristic | Partition | Representative Value | Expected Result |
+|---|---|---|---|
+| Search keyword exists in book title? | Existing title keyword (EP) | `"Flutter"` | System displays books whose titles contain "Flutter" |
+| | Non-existing keyword (EP) | `"XYZ123"` | System displays "Book not found" |
+| Search keyword exists in author name? | Existing author keyword (EP) | `"Nguyễn"` | System displays books written by authors whose names contain "Nguyễn" |
+| Search keyword letter case | Lowercase input (BVA) | `"flutter"` | System displays the same results as `"Flutter"` |
+| | Uppercase input (BVA) | `"FLUTTER"` | System displays the same results as `"Flutter"` |
+| Book category filter | Existing category (EP) | `"Technology"` | System displays books belonging to the Technology category |
+| | Non-existing category (EP) | `"History"` | System displays "Book not found" |
 
 ---
 
