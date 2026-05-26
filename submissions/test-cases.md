@@ -187,7 +187,9 @@
 | TC-29 | Add member - Invalid email + Invalid phone only shows phone error (BUG-009) | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van Test`<br>4. Enter Email: `test@email` (missing .com)<br>5. Enter Phone: `abc` (invalid)<br>6. Click "Add member" | Email = `test@email` (invalid)<br>Phone = `abc` (invalid) | Show both errors or prioritize email error (e.g., "Invalid email") | REQ-07 | EP |
 | TC-30 | Add member - Valid email + Invalid phone shows wrong error | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van Test`<br>4. Enter Email: `test@email.com` (valid)<br>5. Enter Phone: `abc` (invalid)<br>6. Click "Add member" | Email = `test@email.com` (valid)<br>Phone = `abc` (invalid) | Error message: "Invalid phone number" | REQ-07 | BVA |
 | TC-31 | Add member - Valid email + Valid phone | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van A`<br>4. Enter Email: `vana@email.com` (valid)<br>5. Enter Phone: `0246135792` (valid)<br>6. Click "Add member" | Email = `vana@email.com` (valid)<br>Phone = `0246135792` (valid) | Member created successfully | REQ-07 | EP |
-## Decision Table – Borrow Book Function (REQ-04)
+| TC-32 | Search books using English keyword | User logged in, on Books tab | 1. Enter keyword `Flutter` in search box <br> 2. Press Enter | Keyword = Flutter | Display book BOOK001 "Lập trình Flutter cơ bản" | REQ-03 | EP |
+| TC-33 | Filter books by English category name | User logged in, on Books tab | 1. Open category dropdown <br> 2. Select `Technology` | Category = Technology | System displays books in Technology category | REQ-03 | EP |
+| TC-34 | Verify category dropdown language display | User logged in, on Books tab | 1. Open category dropdown | - | Dropdown displays categories in English: Technology, Education, Economics, Soft Skills, Management, Literature | REQ-03 | EP |
 
 #### Decision Table:
 
@@ -210,17 +212,17 @@
 
 ### Test case count by REQ
 
-| Function Group | TC Count | REQ Covered | IDM Techniques Applied |
-|----------------|----------|-------------|------------------------|
-| Login | 4 | REQ-01 | EP |
-| View Book List | 1 | REQ-02 | EP |
-| Search & Filter Books | 7 | REQ-03 | EP |
-| Borrow Book | 5 | REQ-04 | DT, BVA |
-| Return Book | 3 | REQ-05 | EP, BVA |
-| Overdue Handling | 2 | REQ-06 | EP |
-| Member Management | 3 | REQ-07 | EP, BVA |
-| Borrow Record Lookup | 2 | REQ-08 | EP |
-| **Total** | **27** | **REQ-01 → REQ-08** | **EP, BVA, DT** |
+| Function Group | TC Count | TC IDs | REQ Covered | IDM Techniques Applied |
+|----------------|----------|---------|-------------|------------------------|
+| Login | 4 | TC-01 → TC-04 | REQ-01 | EP |
+| View Book List | 1 | TC-05 | REQ-02 | EP |
+| Search & Filter Books | 10 | TC-06 → TC-12, TC-32 → TC-34 | REQ-03 | EP |
+| Borrow Book | 5 | TC-13 → TC-17 | REQ-04 | DT, BVA |
+| Return Book | 3 | TC-18 → TC-20 | REQ-05 | EP, BVA |
+| Overdue Handling | 2 | TC-21 → TC-22 | REQ-06 | EP |
+| Member Management | 7 | TC-23 → TC-25, TC-28 → TC-31 | REQ-07 | EP, BVA |
+| Borrow Record Lookup | 2 | TC-26 → TC-27 | REQ-08 | EP |
+| **Total** | **34** | **TC-01 → TC-34** | **REQ-01 → REQ-08** | **EP, BVA, DT** |
 
 ### SUGG-001: Gợi ý thêm yêu cầu trim khoảng trắng vào SRS
 
