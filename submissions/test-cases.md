@@ -82,12 +82,12 @@
 ### IDM — Return Book (REQ-05)
 
 | Characteristic | Partition | Value | Expected Result |
-|----------------|-----------|-------|-----------------|
-| Is book currently borrowed? | Yes (borrowed) | BR001 | Return successful, show "Return successful", book status changes from "Borrowed" → "Available", borrow record shows "Return date" = current date |
-| | No (not borrowed) | BOOK001 (after reset) | No borrow record found, display error message: "No borrow record found" |
-| Return date vs due date | On time | BR003 | Return successful, book becomes "Available", NO overdue warning |
-| | Overdue (BVA - lower bound) | Due date = yesterday | Return successful, book becomes "Available", AND display warning: "Book return is overdue" |
-| | Overdue (EP) | BR001 | Return successful, book becomes "Available", AND display warning: "Book return is overdue" |
+|---|---|---|---|
+| Borrow record status | Currently borrowed (EP) | `BR001` | Return request succeeds, the book status changes to "Available", and the borrow record is updated with return date = current date |
+| | Not currently borrowed (EP) | A book that has no active borrow record | System rejects the return request because the member is not currently borrowing that book |
+| Return date vs due date | Returned on time (EP) | A newly borrowed book returned before or on its due date | Return request succeeds, the book status changes to "Available", and no overdue warning is displayed |
+| | Returned 1 day late (BVA) | Return date = due date + 1 day | Return request succeeds, the book status changes to "Available", and an overdue warning is displayed |
+| | Returned late (EP) | `BR001` | Return request succeeds, the book status changes to "Available", and an overdue warning is displayed |
 
 ---
 
