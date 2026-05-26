@@ -95,13 +95,13 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| User role | Librarian (EP) | `librarian@library.com` | Has "Check overdue" button visible in Borrow/Return tab. Can click to check overdue records |
-| | Member (EP) | `ba.nguyen@email.com` | Does NOT have "Check overdue" button. Cannot access this function |
+| User role | Librarian (EP) | `librarian@library.com` | System has "Check overdue" button visible in Borrow/Return tab. Can click to check overdue records |
+| | Member (EP) | `ba.nguyen@email.com` | Member Does NOT have "Check overdue" button. Cannot access this function |
 | Due date vs current date | Not overdue (EP) | BR003 (due 15/10/2024, if today < 15/10/2024) | Not marked as overdue, status remains "Borrowed" |
-| | Overdue (BVA - boundary) | Due date = yesterday | After clicking "Check overdue": Marked as "Overdue" |
+| | Overdue (BVA - boundary) | Due date = yesterday | After clicking "Check overdue": System will mark as "Overdue" |
 | | Overdue (EP) | BR001 (due 15/09/2024) | After clicking "Check overdue": Marked as "Overdue" |
-| After clicking check button | Has overdue records | BR001 (overdue) | Displays message: "Updated X overdue records" (X = number of overdue records found) |
-| | No overdue records | All records have due date > today | Displays message: "No overdue records found". No status changes |
+| After clicking check button | Has overdue records | BR001 (overdue) | System displays message: "Updated X overdue records" (X = number of overdue records found) |
+| | No overdue records | All records have due date > today | System displays message: "No overdue records found". No status changes |
 | Multiple clicks | Click first time | BR001,BR003 overdue | Detects and marks 2 overdue records correctly |
 | | Click second time | Same overdue records still exist | Must still detect and mark the same overdue records. |
 
@@ -112,19 +112,19 @@
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
 | User role | Librarian (EP) | `librarian@library.com` | Sees and can access "Members" tab |
-| | Member (EP) | `ba.nguyen@email.com` | Does NOT see "Members" tab |
+| | Member (EP) | `ba.nguyen@email.com` | Member Does NOT see "Members" tab |
 | Email validation | Valid email (EP) | `user@domain.com` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Missing dot (BVA) | `user@domain` | Cannot create. System displays "Invalid email" |
-| | Missing @ (EP) | `userdomain.com` | Cannot create. System displays "Invalid email" |
-| | Empty email (EP) | `""` | Cannot create. System displays "Please enter email" |
+| | Missing dot (BVA) | `user@domain` | System cannot create. System displays "Invalid email" |
+| | Missing @ (EP) | `userdomain.com` | System cannot create. System displays "Invalid email" |
+| | Empty email (EP) | `""` | System cannot create. System displays "Please enter email" |
 | Email duplicate | Not exists (EP) | `newuser@email.com` | System creates successful. System displays "Create succesfull. ID:MEM00X"|
 | | Already exists (EP) | `ba.nguyen@email.com` | Cannot create. System displays "Email already exists" |
 | Phone validation | Valid phone (EP) | `0123456789` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Invalid phone - letters (EP) | `abc` | Cannot create. Display "Invalid phone number" |
+| | Invalid phone - letters (EP) | `abc` | System cannot create. Display "Invalid phone number" |
 | | Invalid phone - too short (BVA) | `123` | System cannot create. Display "Invalid phone number" |
 | | Empty phone (EP) | `""` | System cannot create. Display "Please enter phone number" |
 | Name validation | Valid name (EP) | `Nguyen Van A` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Empty name (EP) | `""` | Cannot create. Display "Please enter name" |
+| | Empty name (EP) | `""` | System cannot create. Display "Please enter name" |
 
 ---
 
