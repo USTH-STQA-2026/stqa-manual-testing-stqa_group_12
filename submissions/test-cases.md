@@ -35,6 +35,20 @@
 
 ---
 
+### IDM — View Book List (REQ-02)
+
+| Characteristic | Partition | Value | Expected Result |
+|----------------|-----------|-------|-----------------|
+| User role | Librarian | `librarian@library.com` | Display all 20 books with columns: Book ID, Title, Author, Category, Year, Status. Both Librarian and Member can view |
+| | Member | `ba.nguyen@email.com` | Display all 20 books with columns: Book ID, Title, Author, Category, Year, Status. Both Librarian and Member can view |
+| Number of books | Full list (20 books) | Access "Books" tab | Display exactly 20 books (BOOK001 → BOOK020) |
+| Book status | Available | BOOK001 | Display status "Available" |
+| | Borrowed | BOOK003 | Display status "Borrowed" |
+| | Lost | BOOK007 | Display status "Lost" |
+| Real-time update | After borrow/return | Borrow BOOK001 | Book status changes immediately from "Available" → "Borrowed" without refreshing page |
+| | After return | Return BOOK001 | Book status changes immediately from "Borrowed" → "Available" without refreshing page |
+
+---
 ### IDM — Search & Filter Books (REQ-03)
 
 | Characteristic | Partition | Value | Expected Result |
