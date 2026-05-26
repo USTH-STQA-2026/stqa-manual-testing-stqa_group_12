@@ -137,7 +137,7 @@
 | Member ID search (Librarian) | ID exists (EP) | `MEM002` | System displays MEM002's records: BR001 and BR004 |
 | | ID does not exist (EP) | `ABC999` | System displays error: "Member not found" |
 | | Empty ID (BVA) | `""` | System displays error: "Please enter member ID (e.g., MEM001)" |
-| Permission (Member) | Member searches other ID | MEM002 searches for MEM003 | System displays error: "You do not have permission to view other member's borrow records" |
+| Permission (Member) | Member searches other ID | MEM002 searches for MEM003 | Member can ONLY view their own records. System displays error: "You do not have permission to view other member's borrow records" |
 | Real-time update | After borrow | MEM002 borrows new book | New record appears immediately. System displays their borrow records |
 | | After return | MEM002 returns a book | Record status updates immediately with return date. Book will modify to "Available" |
 
