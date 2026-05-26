@@ -25,7 +25,7 @@
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
 | Does email exist in DB? | Yes | `librarian@library.com` | Login successful |
-| | No | `noone@email.com` | Error message |
+| | No | `nobody@test.com` | Error message |
 | Is password correct? | Correct | `admin123` | Login successful |
 | | Incorrect | `wrongpass` | Error message |
 | Are input fields empty? | Not empty | (any value) | Normal processing |
