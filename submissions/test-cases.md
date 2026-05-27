@@ -95,11 +95,15 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| User role | Librarian (EP) | `librarian@library.com` | Has "Check overdue" button |
-| | Member (EP) | `ba.nguyen@email.com` | Does not see "Check overdue" button |
+| User role | Librarian (EP) | `librarian@library.com` | System has "Check overdue" button visible in Borrow/Return tab. Can click to check overdue records |
+| | Member (EP) | `ba.nguyen@email.com` | Member Does NOT have "Check overdue" button. Cannot access this function |
 | Due date vs current date | Not overdue (EP) | BR003 | Not marked as overdue |
-| | Just overdue (BVA - boundary) | Due date = yesterday | Marked as "Overdue" |
-| | Overdue (EP) | BR001 | Marked as "Overdue" |
+| | Overdue (BVA - boundary) | Due date = yesterday | After clicking "Check overdue": System will mark as "Overdue" |
+| | Overdue (EP) | BR001 (due 15/09/2024) | After clicking "Check overdue": Marked as "Overdue" |
+| After clicking check button | Has overdue records | BR001 (overdue) | System displays message: "Updated X overdue records" (X = number of overdue records found) |
+| | No overdue records | All records have due date > today | System displays message: "No overdue records found". No status changes |
+| Multiple clicks | Click first time | BR001,BR003 overdue | Detects and marks 2 overdue records correctly |
+| | Click second time | Same overdue records still exist | Must still detect and mark the same overdue records. |
 
 ---
 
@@ -108,13 +112,19 @@
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
 | User role | Librarian (EP) | `librarian@library.com` | Sees "Members" tab |
-| | Member (EP) | `ba.nguyen@email.com` | Does not see "Members" tab |
+| | Member (EP) | `ba.nguyen@email.com` | Member Does NOT see "Members" tab |
 | Email validation | Valid (EP) | `user@domain.com` | Creation successful |
-| | Missing dot (BVA) | `user@domain` | Error message "Invalid email" |
-| | Missing @ (EP) | `userdomain.com` | Error message "Invalid email" |
-| | Empty (EP) | `""` | Error message "Please enter email" |
-| Email duplicate? | Not exists (EP) | gi`user@domain.com` | Creation successful |
-| | Already exists (EP) | `ba.nguyen@email.com` | Error message "Email already exists" |
+| | Missing dot (BVA) | `user@domain` | System cannot create. System displays "Invalid email" |
+| | Missing @ (EP) | `userdomain.com` | System cannot create. System displays "Invalid email" |
+| | Empty email (EP) | `""` | System cannot create. System displays "Please enter email" |
+| Email duplicate | Not exists (EP) | `newuser@email.com` | System creates successful. System displays "Create succesfull. ID:MEM00X"|
+| | Already exists (EP) | `ba.nguyen@email.com` | Cannot create. System displays "Email already exists" |
+| Phone validation | Valid phone (EP) | `0123456789` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
+| | Invalid phone - letters (EP) | `abc` | System cannot create. Display "Invalid phone number" |
+| | Invalid phone - too short (BVA) | `123` | System cannot create. Display "Invalid phone number" |
+| | Empty phone (EP) | `""` | System cannot create. Display "Please enter phone number" |
+| Name validation | Valid name (EP) | `Nguyen Van A` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
+| | Empty name (EP) | `""` | System cannot create. Display "Please enter name" |
 
 ---
 
@@ -127,6 +137,9 @@
 | Member ID search (Librarian) | ID exists (EP) | `MEM002` | Display MEM002's records |
 | | ID does not exist (EP) | `ABC002` | Error message "Member not found" |
 | | Empty ID (BVA) | `""` | Error message "Please enter member ID (e.g., MEM001)" |
+| Permission (Member) | Member searches other ID | MEM002 searches for MEM003 | Member can ONLY view their own records. System displays error: "You do not have permission to view other member's borrow records" |
+| Real-time update | After borrow | MEM002 borrows new book | New record appears immediately. System displays their borrow records |
+| | After return | MEM002 returns a book | Record status updates immediately with return date. Book will modify to "Available" |
 
 ## Test Design Technique Explanation
 
