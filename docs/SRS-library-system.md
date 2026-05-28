@@ -135,13 +135,13 @@ Hệ thống quản lý mượn sách cho một thư viện nhỏ. Hai vai trò 
 
 ### IDM — Return Book (REQ-05)
 
-| Characteristic | Partition | Value | Expected Result |
-|---|---|---|---|
-| Borrow record status | Currently borrowed (EP) | `BR001` | Return request succeeds, the book status changes to "Available", and the borrow record is updated with return date = current date |
-| | Not currently borrowed (EP) | A book that has no active borrow record | System rejects the return request because the member is not currently borrowing that book |
-| Return date vs due date | Returned on time (EP) | A newly borrowed book returned before or on its due date | Return request succeeds, the book status changes to "Available", and no overdue warning is displayed |
-| | Returned 1 day late (BVA) | Return date = due date + 1 day | Return request succeeds, the book status changes to "Available", and an overdue warning is displayed |
-| | Returned late (EP) | `BR001` | Return request succeeds, the book status changes to "Available", and an overdue warning is displayed |
+|### REQ-05: Trả sách / Return Book
+
+| Mục | Nội dung |
+|-----|---------|
+| *Điều kiện* | Chỉ trả sách mà thành viên *đang mượn* |
+| *Kết quả* | Sách chuyển về trạng thái "Có sẵn" |
+| *Quá hạn* | Nếu trả quá hạn → hệ thống phải hiển thị *cảnh báo quá hạn* |
 
 ### REQ-06: Xử lý sách quá hạn / Overdue Handling
 
