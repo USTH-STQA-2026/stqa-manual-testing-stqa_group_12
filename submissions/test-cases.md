@@ -97,7 +97,7 @@
 |----------------|-----------|-------|-----------------|
 | User role | Librarian (EP) | `librarian@library.com` | System has "Check overdue" button visible in Borrow/Return tab. Can click to check overdue records |
 | | Member (EP) | `ba.nguyen@email.com` | Member Does NOT have "Check overdue" button. Cannot access this function |
-| Due date vs current date | Not overdue (EP) | BR003 | Not marked as overdue |
+| Due date vs current date | Not overdue (EP) | BR003 (due 15/10/2024, if today < 15/10/2024) | Not marked as overdue, status remains "Borrowed" |
 | | Overdue (BVA - boundary) | Due date = yesterday | After clicking "Check overdue": System will mark as "Overdue" |
 | | Overdue (EP) | BR001 (due 15/09/2024) | After clicking "Check overdue": Marked as "Overdue" |
 | After clicking check button | Has overdue records | BR001 (overdue) | System displays message: "Updated X overdue records" (X = number of overdue records found) |
@@ -111,20 +111,20 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| User role | Librarian (EP) | `librarian@library.com` | Sees "Members" tab |
+| User role | Librarian (EP) | `librarian@library.com` | Sees and can access "Members" tab |
 | | Member (EP) | `ba.nguyen@email.com` | Member Does NOT see "Members" tab |
-| Email validation | Valid (EP) | `user@domain.com` | Creation successful |
-| | Missing dot (BVA) | `user@domain` | System cannot create. System displays "Invalid email" |
-| | Missing @ (EP) | `userdomain.com` | System cannot create. System displays "Invalid email" |
-| | Empty email (EP) | `""` | System cannot create. System displays "Please enter email" |
-| Email duplicate | Not exists (EP) | `newuser@email.com` | System creates successful. System displays "Create succesfull. ID:MEM00X"|
-| | Already exists (EP) | `ba.nguyen@email.com` | Cannot create. System displays "Email already exists" |
-| Phone validation | Valid phone (EP) | `0123456789` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Invalid phone - letters (EP) | `abc` | System cannot create. Display "Invalid phone number" |
-| | Invalid phone - too short (BVA) | `123` | System cannot create. Display "Invalid phone number" |
-| | Empty phone (EP) | `""` | System cannot create. Display "Please enter phone number" |
-| Name validation | Valid name (EP) | `Nguyen Van A` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
-| | Empty name (EP) | `""` | System cannot create. Display "Please enter name" |
+| Email validation | Valid email (EP) | `user@domain.com` | System creates successful. System displays "Create succesfull. ID:MEM00X" |
+| | Missing dot (BVA) | `user@domain` | System displays "Invalid email" |
+| | Missing @ (EP) | `userdomain.com` | System displays "Invalid email" |
+| | Empty email (EP) | `""` | System displays "Please enter email" |
+| Email duplicate | Not exists (EP) | `newuser@email.com` | System displays "Create succesfull. ID:MEM00X"|
+| | Already exists (EP) | `ba.nguyen@email.com` | System displays "Email already exists" |
+| Phone validation | Valid phone (EP) | `0123456789` | System displays "Create succesfull. ID:MEM00X" |
+| | Invalid phone - letters (EP) | `abc` | System displays "Invalid phone number" |
+| | Invalid phone - too short (BVA) | `123` | System displays "Invalid phone number" |
+| | Empty phone (EP) | `""` | System displays "Please enter phone number" |
+| Name validation | Valid name (EP) | `Nguyen Van A` | System displays "Create succesfull. ID:MEM00X" |
+| | Empty name (EP) | `""` | System displays "Please enter name" |
 
 ---
 
@@ -132,14 +132,15 @@
 
 | Characteristic | Partition | Value | Expected Result |
 |----------------|-----------|-------|-----------------|
-| User role | Librarian (EP) | `librarian@library.com` | Can view all borrow records (5 records) |
-| | Member (EP) | `ba.nguyen@email.com` | Can only view own records (BR001, BR004) |
-| Member ID search (Librarian) | ID exists (EP) | `MEM002` | Display MEM002's records |
-| | ID does not exist (EP) | `ABC002` | Error message "Member not found" |
-| | Empty ID (BVA) | `""` | Error message "Please enter member ID (e.g., MEM001)" |
+| User role | Librarian (EP) | `librarian@library.com` | Can view ALL borrow records (5 records: BR001, BR002, BR003, BR004, BR005) |
+| | Member (EP) | `ba.nguyen@email.com` | Member can ONLY view their own records (BR001, BR004). Cannot see other members' records |
+| Member ID search (Librarian) | ID exists (EP) | `MEM002` | System displays MEM002's records: BR001 and BR004 |
+| | ID does not exist (EP) | `ABC999` | System displays error: "Member not found" |
+| | Empty ID (BVA) | `""` | System displays error: "Please enter member ID (e.g., MEM001)" |
 | Permission (Member) | Member searches other ID | MEM002 searches for MEM003 | Member can ONLY view their own records. System displays error: "You do not have permission to view other member's borrow records" |
 | Real-time update | After borrow | MEM002 borrows new book | New record appears immediately. System displays their borrow records |
 | | After return | MEM002 returns a book | Record status updates immediately with return date. Book will modify to "Available" |
+
 
 ## Test Design Technique Explanation
 
@@ -188,40 +189,41 @@
 
 | TC ID | Test Objective | Precondition | Steps | Input Data | Expected Result | REQ | Technique |
 |-------|----------------|--------------|-------|-------------|-----------------|-----|-----------|
-| TC-01 | Successful login with Librarian account | User not logged in, on login page | 1. Enter email `librarian@library.com` <br> 2. Enter password `admin123` <br> 3. Click "Login" | Email = librarian@library.com <br> Password = admin123 | Login is successful; user is redirected to the homepage; AppBar displays the logged-in user name and role; tabs “Books”, “Borrow/Return”, and “Members” are displayed. | REQ-01 | EP (Happy path) |
-| TC-02 | Login fails with non-existent email | User not logged in | 1. Enter email `wrong@email.com` <br> 2. Enter password `admin123` <br> 3. Click "Login" | Email = wrong@email.com | Display exact error message: “Member not found”; user remains on the Login page; no session is created.| REQ-01 | EP (Negative) |
-| TC-03 | Login fails with wrong password | User not logged in | 1. Enter email `librarian@library.com` <br> 2. Enter password `wrong123` <br> 3. Click "Login" | Password = wrong123 | Display error message "Incorrect password" ; user is not redirected to the homepage.| REQ-01 | EP (Negative) |
-| TC-04 | Login fails with empty email and password | User not logged in | 1. Leave email empty <br> 2. Leave password empty <br> 3. Click "Login" | Email = "" <br> Password = "" | Display error message "Please enter email and password"; login request is not processed. | REQ-01 | EP (Negative) |
-| TC-05 | View all books in the system | User logged in successfully | Go to "Books" tab | - | Display all 20 books with information: Book ID, Title, Author, Category, Status and status("Available","Borrowed", or "Lost"). | REQ-02 | EP (Happy path) |
-| TC-06 | Search books by keyword with results | User logged in, on Books tab | 1. Enter keyword `Flutter` in search box <br> 2. Press Enter | Keyword = Flutter | Display book BOOK001 "Lập trình Flutter cơ bản" matching the keyword "Flutter"| REQ-03 | EP (Happy path) |
+| TC-01 | Successful login with Librarian account | User not logged in, on login page | 1. Enter email `librarian@library.com` <br> 2. Enter password `admin123` <br> 3. Click "Login" | Email = librarian@library.com <br> Password = admin123 | Login successful, redirect to home page; display tabs "Books", "Borrow/Return", "Members" | REQ-01 | EP (Happy path) |
+| TC-02 | Login fails with non-existent email | User not logged in | 1. Enter email `wrong@email.com` <br> 2. Enter password `admin123` <br> 3. Click "Login" | Email = wrong@email.com | Display error message "Member not found" | REQ-01 | EP (Negative) |
+| TC-03 | Login fails with wrong password | User not logged in | 1. Enter email `librarian@library.com` <br> 2. Enter password `wrong123` <br> 3. Click "Login" | Password = wrong123 | Display error message "Incorrect password" | REQ-01 | EP (Negative) |
+| TC-04 | Login fails with empty email and password | User not logged in | 1. Leave email empty <br> 2. Leave password empty <br> 3. Click "Login" | Email = "" <br> Password = "" | Display error message "Please enter email and password" | REQ-01 | EP (Negative) |
+| TC-05 | View all books in the system | User logged in successfully | Go to "Books" tab | - | Display all 20 books with information: Book ID, Title, Author, Category, Status | REQ-02 | EP (Happy path) |
+| TC-06 | Search books by keyword with results | User logged in, on Books tab | 1. Enter keyword `Flutter` in search box <br> 2. Press Enter | Keyword = Flutter | Display book BOOK001 "Lập trình Flutter cơ bản" | REQ-03 | EP (Happy path) |
 | TC-07 | Search books by keyword with no results | User logged in, on Books tab | 1. Enter keyword `xyzxyz123` in search box <br> 2. Press Enter | Keyword = xyzxyz123 | Display message "No books found" | REQ-03 | EP (Negative) |
-| TC-08 | Search books is case-insensitive | User logged in, on Books tab | 1. Enter keyword `flutter` (lowercase) in search box <br> 2. Press Enter | Keyword = flutter | isplay book BOOK001 "Lập trình Flutter cơ bản" matching the keyword "Flutter" | REQ-03 | EP (Happy path) |
-| TC-09 | Filter books by Literature category | User logged in, on Books tab | Select "Literature" from category dropdown | Category = Literature | System displays only books belonging to the "Văn học" category, including BOOK019 and BOOK020 | REQ-03 | EP (Happy path) |
-| TC-10 | Filter books by category is case-insensitive | User logged in, on Books tab | 1. Enter `văn học` (lowercase) in category filter <br> 2. Press Enter | Category = văn học | System displays only books belonging to the "Văn học" category, including BOOK019 and BOOK020  | REQ-03 | EP (Happy path) |
-| TC-11 | Combine search and filter with no results | User logged in, on Books tab | 1. Select category "Văn học" <br> 2. Enter keyword `Flutter` <br> 3. Press Enter | Category = Văn học <br> Keyword = Flutter | Display message "No books found"; no books are displayed. | REQ-03 | EP (Negative) |
-| TC-12 | Combine search and filter with results | User logged in, on Books tab | 1. Select category "Văn học" <br> 2. Enter keyword `đại cương` <br> 3. Press Enter | Category = Văn học <br> Keyword = đại cương | Display BOOK019 "Văn học Việt Nam đại cương" only.| REQ-03 | EP (Happy path) |
-| TC-13 | Borrow book successfully with valid member account | Member MEM002 logged in; BOOK001 is "Available" | 1. Find BOOK001 <br> 2. Click "Borrow" <br> 3. Click "Confirm" | Member = MEM002 <br> Book = BOOK001 | Borrow request succeeds; a success message is displayed; BOOK001 status changes from “Có sẵn” to “Đã mượn”; a new borrow record is created with due date = borrow date + 14 days. | REQ-04 | DT (Happy path) |
-| TC-14 | Borrow fails because book is already borrowed | Member logged in; BOOK003 is "Borrowed" | 1. Find BOOK003 <br> 2. Click "Borrow" | Book = BOOK003 |  Borrow request is rejected because BOOK003 is already borrowed; no new borrow record is created; display error message "Book already borrowed" | REQ-04 | DT (Negative) |
-| TC-15 | Borrow fails when reaching limit of 3 books | Member MEM002 currently has exactly 3 borrowed books | 1. Find an "Available" book <br> 2. Click "Borrow" | Member = MEM002 <br> Borrowed books = 3 | Borrow request is rejected because the member has already borrowed 3 books; borrow count remains unchanged at 3; no new borrow record is created; display error message "Reached limit of 3 books" | REQ-04 | BVA, DT |
-| TC-16 | Borrow fails with suspended account | Member MEM005 has "Suspended" status, logged in | 1. Find an "Available" book <br> 2. Click "Borrow" | User status = Suspended | Display error message "Account is suspended" no borrow record is created; the target book status remains unchanged.| REQ-04 | DT (Negative) |
-| TC-17 | Borrow fails with expired library card | Member MEM006 has "Expired" status, logged in | 1. Find an "Available" book <br> 2. Click "Borrow" | Card status = Expired | Display error message "Library card has expired"; no borrow record is created; the target book status remains unchanged. | REQ-04 | DT (Negative) |
-| TC-18 | Return book successfully when not overdue | Borrow record BR003 is not overdue | 1. Go to "Borrow/Return" tab <br> 2. Select record BR003 <br> 3. Click "Return" | Borrow Record = BR003 | Display "Return successful"; record status changes to "Returned"; return date is updated to the current date. | REQ-05 | EP (Happy path) |
-| TC-19 | Return book when overdue | Borrow record BR001 is overdue | 1. Go to "Borrow/Return" tab <br> 2. Select record BR001 <br> 3. Click "Return" | Borrow Record = BR001 | Display warning "Book return is overdue" and complete return; the borrow record is updated with the current return date; the related book status changes to “Available”. | REQ-05 | BVA |
+| TC-08 | Search books is case-insensitive | User logged in, on Books tab | 1. Enter keyword `flutter` (lowercase) in search box <br> 2. Press Enter | Keyword = flutter | System displays same results as TC-06 | REQ-03 | EP (Happy path) |
+| TC-09 | Filter books by Literature category | User logged in, on Books tab | Select "Literature" from category dropdown | Category = Literature | System displays only BOOK019 and BOOK020 | REQ-03 | EP (Happy path) |
+| TC-10 | Filter books by category is case-insensitive | User logged in, on Books tab | 1. Enter `văn học` (lowercase) in category filter <br> 2. Press Enter | Category = văn học | System displays same results as TC-09 | REQ-03 | EP (Happy path) |
+| TC-11 | Combine search and filter with no results | User logged in, on Books tab | 1. Select category "Văn học" <br> 2. Enter keyword `Flutter` <br> 3. Press Enter | Category = Văn học <br> Keyword = Flutter | Display message "No books found" | REQ-03 | EP (Negative) |
+| TC-12 | Combine search and filter with results | User logged in, on Books tab | 1. Select category "Văn học" <br> 2. Enter keyword `đại cương` <br> 3. Press Enter | Category = Văn học <br> Keyword = đại cương | Display BOOK019 "Văn học Việt Nam đại cương" | REQ-03 | EP (Happy path) |
+| TC-13 | Borrow book successfully with valid member account | Member MEM002 logged in; BOOK001 is "Available" | 1. Find BOOK001 <br> 2. Click "Borrow" <br> 3. Click "Confirm" | Member = MEM002 <br> Book = BOOK001 | Display "Borrow successful"; BOOK001 status changes to "Borrowed" | REQ-04 | DT (Happy path) |
+| TC-14 | Borrow fails because book is already borrowed | Member logged in; BOOK003 is "Borrowed" | 1. Find BOOK003 <br> 2. Click "Borrow" | Book = BOOK003 | Display error message "Book already borrowed" | REQ-04 | DT (Negative) |
+| TC-15 | Borrow fails when reaching limit of 3 books | Member MEM002 currently has exactly 3 borrowed books | 1. Find an "Available" book <br> 2. Click "Borrow" | Member = MEM002 <br> Borrowed books = 3 | Display error message "Reached limit of 3 books" | REQ-04 | BVA, DT |
+| TC-16 | Borrow fails with suspended account | Member MEM005 has "Suspended" status, logged in | 1. Find an "Available" book <br> 2. Click "Borrow" | User status = Suspended | Display error message "Account is suspended" | REQ-04 | DT (Negative) |
+| TC-17 | Borrow fails with expired library card | Member MEM005 has "Expired" status, logged in | 1. Find an "Available" book <br> 2. Click "Borrow" | Card status = Expired | Display error message "Library card has expired" | REQ-04 | DT (Negative) |
+| TC-18 | Return book successfully when not overdue | Borrow record BR003 is not overdue | 1. Go to "Borrow/Return" tab <br> 2. Select record BR003 <br> 3. Click "Return" | Borrow Record = BR003 | Display "Return successful"; record status changes to "Returned" | REQ-05 | EP (Happy path) |
+| TC-19 | Return book when overdue | Borrow record BR001 is overdue | 1. Go to "Borrow/Return" tab <br> 2. Select record BR001 <br> 3. Click "Return" | Borrow Record = BR001 | Display warning "Book return is overdue" and complete return | REQ-05 | BVA |
 | TC-20 | Return function not displayed for unborrowed books | BOOK005 is "Available" | 1. Look for borrow information of BOOK005 <br> 2. Check return action | Book = BOOK005 | System does not display "Return" button | REQ-05 | EP (Negative) |
-| TC-21 | Check and mark overdue borrow records first time | User logged in as Librarian | Click "Check overdue" | Role = Librarian | System correctly marks overdue records like BR001 and BR004 as "Overdue" overdue records become visible in the overdue list. | REQ-06 | EP (Happy path) |
+| TC-21 | Check and mark overdue borrow records first time | User logged in as Librarian | Click "Check overdue" | Role = Librarian | System correctly marks overdue records like BR001 and BR004 as "Overdue" | REQ-06 | EP (Happy path) |
 | TC-22 | Multiple overdue checks do not create wrong data | Overdue records already marked | Click "Check overdue" a second time | Role = Librarian | System keeps correct overdue status, no duplicate or wrong data changes | REQ-06 | EP (Negative) |
-| TC-23 | Add new member successfully with valid email | User logged in as Librarian | 1. Go to "Members" tab <br> 2. Click "Add member" <br> 3. Enter `newmember@email.com` <br> 4. Click "Add member" | Email = newmember@email.com | A new member is added successfully and appears in the member list with the entered email and information. | REQ-07 | EP (Happy path) |
-| TC-24 | Add member fails with invalid email | User logged in as Librarian | 1. Go to "Members" tab <br> 2. Click "Add member" <br> 3. Enter `newmember@email` <br> 4. Click "Add member" | Email = newmember@email | System rejects email newmember@email because the email format is invalid (missing . in the domain part); no member record is created.| REQ-07 | BVA |
-| TC-25 | Add member fails with duplicate email | User logged in as Librarian | 1. Go to "Members" tab <br> 2. Click "Add member" <br> 3. Enter existing email <br> 4. Click "Add member" | Email = ba.nguyen@email.com | Display error message "Email already exists" no duplicate member record is created. | REQ-07 | EP (Negative) |
-| TC-26 | Librarian views all borrow records in system | User logged in as Librarian | Go to "Borrow/Return" tab | Role = Librarian | Librarian can view all borrow records including record ID, borrowed book, borrow date, due date, and status. | REQ-08 | EP (Happy path) |
-| TC-27 | Member can only view their own borrow records | User logged in as Member | Go to "Borrow/Return" tab | Role = Member | System only displays borrow records of the logged in account; borrow records of other members are not displayed. | REQ-08 | EP (Negative) |
-| TC-28 | Add member - Invalid email + Valid phone still creates member (BUG-008) | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van Test`<br>4. Enter Email: `test@email` (missing .com)<br>5. Enter Phone: `00246135792` (valid)<br>6. Click "Add member" | Email = `test@email` (invalid)<br>Phone = `0246135792` (valid) | Error message: "Invalid email", member not created; the member record is not created even though the phone number is valid. | REQ-07 | BVA |
+| TC-23 | Add new member successfully with valid email | User logged in as Librarian | 1. Go to "Members" tab <br> 2. Click "Add member" <br> 3. Enter `newmember@email.com` <br> 4. Click "Add member" | Email = newmember@email.com | System adds new member successfully | REQ-07 | EP (Happy path) |
+| TC-24 | Add member fails with invalid email | User logged in as Librarian | 1. Go to "Members" tab <br> 2. Click "Add member" <br> 3. Enter `newmember@email` <br> 4. Click "Add member" | Email = newmember@email | Display error message "Invalid email" | REQ-07 | BVA |
+| TC-25 | Add member fails with duplicate email | User logged in as Librarian | 1. Go to "Members" tab <br> 2. Click "Add member" <br> 3. Enter existing email <br> 4. Click "Add member" | Email = ba.nguyen@email.com | Display error message "Email already exists" | REQ-07 | EP (Negative) |
+| TC-26 | Librarian views all borrow records in system | User logged in as Librarian | Go to "Borrow/Return" tab | Role = Librarian | System displays all borrow records of all members | REQ-08 | EP (Happy path) |
+| TC-27 | Member can only view their own borrow records | User logged in as Member | Go to "Borrow/Return" tab | Role = Member | System only displays borrow records of the logged in account | REQ-08 | EP (Negative) |
+| TC-28 | Add member - Invalid email + Valid phone still creates member (BUG-008) | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van Test`<br>4. Enter Email: `test@email` (missing .com)<br>5. Enter Phone: `00246135792` (valid)<br>6. Click "Add member" | Email = `test@email` (invalid)<br>Phone = `0246135792` (valid) | Error message: "Invalid email", member not created | REQ-07 | BVA |
 | TC-29 | Add member - Invalid email + Invalid phone only shows phone error (BUG-009) | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van Test`<br>4. Enter Email: `test@email` (missing .com)<br>5. Enter Phone: `abc` (invalid)<br>6. Click "Add member" | Email = `test@email` (invalid)<br>Phone = `abc` (invalid) | Show both errors or prioritize email error (e.g., "Invalid email") | REQ-07 | EP |
-| TC-30 | Add member - Valid email + Invalid phone shows wrong error | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van Test`<br>4. Enter Email: `test@email.com` (valid)<br>5. Enter Phone: `abc` (invalid)<br>6. Click "Add member" | Email = `test@email.com` (valid)<br>Phone = `abc` (invalid) | Error message: "Invalid phone number"; the member record is not created.| REQ-07 | BVA |
-| TC-31 | Add member - Valid email + Valid phone | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van A`<br>4. Enter Email: `vana@email.com` (valid)<br>5. Enter Phone: `0246135792` (valid)<br>6. Click "Add member" | Email = `vana@email.com` (valid)<br>Phone = `0246135792` (valid) | Member created successfully and appears in the member list with the correct name,email, and phone number. | REQ-07 | EP |
+| TC-30 | Add member - Valid email + Invalid phone shows wrong error | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van Test`<br>4. Enter Email: `test@email.com` (valid)<br>5. Enter Phone: `abc` (invalid)<br>6. Click "Add member" | Email = `test@email.com` (valid)<br>Phone = `abc` (invalid) | Error message: "Invalid phone number" | REQ-07 | BVA |
+| TC-31 | Add member - Valid email + Valid phone | Librarian logged in `librarian@library.com` | 1. Go to "Members" tab<br>2. Click "Add member"<br>3. Enter Name: `Nguyen Van A`<br>4. Enter Email: `vana@email.com` (valid)<br>5. Enter Phone: `0246135792` (valid)<br>6. Click "Add member" | Email = `vana@email.com` (valid)<br>Phone = `0246135792` (valid) | Member created successfully | REQ-07 | EP |
 | TC-32 | Search books using English keyword | User logged in, on Books tab | 1. Enter keyword `Flutter` in search box <br> 2. Press Enter | Keyword = Flutter | Display book BOOK001 "Lập trình Flutter cơ bản" | REQ-03 | EP (Happy path) |
-| TC-33 | Filter books by English category name | User logged in, on Books tab | 1. Open category dropdown <br> 2. Select `Technology` | Category = Technology | System displays books in Technology category only.| REQ-03 | EP (Happy path) |
+| TC-33 | Filter books by English category name | User logged in, on Books tab | 1. Open category dropdown <br> 2. Select `Technology` | Category = Technology | System displays books in Technology category | REQ-03 | EP (Happy path) |
 | TC-34 | Verify category dropdown language display | User logged in, on Books tab | 1. Open category dropdown | - | Dropdown displays categories in English: Technology, Education, Economics, Soft Skills, Management, Literature | REQ-03 | EP (UI Validation) |
+
 
 #### Decision Table:
 
@@ -251,7 +253,7 @@
 | Search & Filter Books | 10 | REQ-03 | EP |
 | Borrow Book | 5 | REQ-04 | DT, BVA |
 | Return Book | 3 | REQ-05 | EP, BVA |
-| Overdue Handling | 2 | REQ-06 | EP |  
+| Overdue Handling | 2 | REQ-06 | EP |
 | Member Management | 7 | REQ-07 | EP, BVA |
 | Borrow Record Lookup | 2 | REQ-08 | EP |
 | **Total** | **34** | **REQ-01 → REQ-08** | **EP, BVA, DT** |
