@@ -19,7 +19,7 @@
 | **Related TC** | TC-11 |
 | **Related REQ** | REQ-03 |
 | **Severity** | High |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Nguyen An Khánh |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -66,7 +66,7 @@ Apply both conditions with AND operator: (Category = X) AND (Title contains Y OR
 | **Related TC** | TC-15 |
 | **Related REQ** | REQ-04 |
 | **Severity** | High |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Nguyen An Khánh |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -84,8 +84,8 @@ Logged in as member ba.nguyen@email.com (MEM002), currently has exactly 3 borrow
 **Steps to Reproduce:**
 1. Go to Books tab
 2. Find an "Available" book as the 4th book
-3. Click "Borrow" button
-4. Click "Confirm"
+3. Click "+" button
+4. Click "Borrow"
 
 **Expected Result (SRS REQ-04):**
 - Maximum limit is 3 books per member
@@ -239,7 +239,7 @@ Logged in as Librarian, have overdue borrow record (BR001) as per SRS section 3.
 
 **Actual Result:**
 - First time: correctly detects overdue records
-- Second time: reports "0 overdue records"
+- Second time: reports "Update: 0 overdue records"
 
 **Impact:**
 After first click, Librarian cannot re-check overdue status if new overdue records appear. Violates SRS requirement that function must work each time it is activated.
