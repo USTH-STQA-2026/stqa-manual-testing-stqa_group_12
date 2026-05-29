@@ -44,7 +44,7 @@
 | TC-26 | Borrow record lookup (Member) | Display only BR001, BR004 (own records) | Member account can view borrow records of another member (MEM003) | ❌ **FAIL** | - | BUG-007 |
 | TC-27 | Add member | Show error "Invalid email", cannot create (invalid email + valid phone) | Add successful | ❌ **FAIL** | - | BUG-008 |
 | TC-28 | Add member | Show email error or both errors (invalid email + invalid phone) | Only show "Invalid phone number" | ❌ **FAIL** | - | BUG-009 |
-| TC-29 | Add member | Show error "Invalid phone number" (valid email + invalid phone) | Show error "Invalid email" | ❌ **FAIL** | - | BUG-010 |
+| TC-29 | Add member | Show error "Invalid phone number" (valid email + invalid phone) | Only show error "Invalid phone" | ❌ **FAIL** | - | BUG-010 |
 | TC-30 | Add member | Add successful (valid email + valid phone) | Add successful | ✅ **PASS** | - | - |
 | TC-31 | Search (English) | Display book "Lập trình Flutter cơ bản" | Display book "Lập trình Flutter cơ bản" | ✅ **PASS** | - | - |
 | TC-32 | Filter category (English) | Display Technology category books | No books found | ❌ **FAIL** | - | BUG-011 |
