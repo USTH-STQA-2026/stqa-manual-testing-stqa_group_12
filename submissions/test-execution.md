@@ -45,10 +45,9 @@
 | TC-27 | Add member | Show error "Invalid email", cannot create (invalid email + valid phone) | Add successful | ❌ **FAIL** | - | BUG-008 |
 | TC-28 | Add member | Show email error or both errors (invalid email + invalid phone) | Only show "Invalid phone number" | ❌ **FAIL** | - | BUG-009 |
 | TC-29 | Add member | Show error "Invalid phone number" (valid email + invalid phone) | Only show error "Invalid phone" | ❌ **FAIL** | - | BUG-010 |
-| TC-30 | Add member | Add successful (valid email + valid phone) | Add successful | ✅ **PASS** | - | - |
-| TC-31 | Search (English) | Display book "Lập trình Flutter cơ bản" | Display book "Lập trình Flutter cơ bản" | ✅ **PASS** | - | - |
-| TC-32 | Filter category (English) | Display Technology category books | No books found | ❌ **FAIL** | - | BUG-011 |
-| TC-33 | Category dropdown (English) | Dropdown displays English (Technology, Education, Economics, Soft Skills, Management, Literature) | Dropdown displays Vietnamese (Công nghệ, Giáo dục, Kinh tế, Kỹ năng mềm, Quản trị, Văn học) | ❌ **FAIL** | - | BUG-012 |
+| TC-30 | Search (English) | Display book "Lập trình Flutter cơ bản" | Display book "Lập trình Flutter cơ bản" | ✅ **PASS** | - | - |
+| TC-31 | Filter category (English) | Display Technology category books | No books found | ❌ **FAIL** | - | BUG-011 |
+| TC-32 | Category dropdown (English) | Dropdown displays English (Technology, Education, Economics, Soft Skills, Management, Literature) | Dropdown displays Vietnamese (Công nghệ, Giáo dục, Kinh tế, Kỹ năng mềm, Quản trị, Văn học) | ❌ **FAIL** | - | BUG-012 |
 
 ## Summary of Results
 

@@ -210,7 +210,7 @@ When return_date > due_date, display warning "Book return is overdue" before or 
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-005 |
-| **Related TC** | TC-23 |
+| **Related TC** | TC-22 |
 | **Related REQ** | REQ-06 |
 | **Severity** | Medium |
 | **Detected by** | Nguyen An Khanh |
@@ -459,7 +459,7 @@ Check each field individually and display the correct error corresponding to the
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-010 |
-| **Related TC** | TC-32 |
+| **Related TC** | TC-31 |
 | **Related REQ** | REQ-03 |
 | **Severity** | High |
 | **Detected by** | Nguyen An Khanh |
@@ -506,7 +506,7 @@ Map English category names ("Technology") to Vietnamese category data ("Công ng
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-011 |
-| **Related TC** | TC-33 |
+| **Related TC** | TC-32 |
 | **Related REQ** | REQ-03 |
 | **Severity** | Medium |
 | **Detected by** | Nguyen An Khanh |
