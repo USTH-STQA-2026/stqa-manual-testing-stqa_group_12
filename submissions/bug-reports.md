@@ -257,7 +257,7 @@ Reset status or re-scan based on due_date vs current date each time the button i
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-006 |
-| **Related TC** | TC-24, TC-25 |
+| **Related TC** | TC-23 |
 | **Related REQ** | REQ-07 |
 | **Severity** | High |
 | **Detected by** | Nguyen An Khanh |
@@ -315,7 +315,7 @@ Fix email validation logic according to SRS: only accept email with @ and dot af
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-007 |
-| **Related TC** | TC-28 |
+| **Related TC** | TC-27 |
 | **Related REQ** | REQ-07 |
 | **Severity** | High |
 | **Detected by** | Nguyen An Khanh |
@@ -364,7 +364,7 @@ Validate email first according to SRS. If email is invalid, display error and do
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-008 |
-| **Related TC** | TC-29 |
+| **Related TC** | TC-28 |
 | **Related REQ** | REQ-07 |
 | **Severity** | Medium |
 | **Detected by** | Nguyen An Khanh |
@@ -412,7 +412,7 @@ Validate all fields according to SRS and display all errors, or prioritize displ
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-009 |
-| **Related TC** | TC-30 |
+| **Related TC** | TC-29 |
 | **Related REQ** | REQ-07 |
 | **Severity** | Medium |
 | **Detected by** | Nguyen An Khanh |
@@ -459,7 +459,7 @@ Check each field individually and display the correct error corresponding to the
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-010 |
-| **Related TC** | TC-33 |
+| **Related TC** | TC-32 |
 | **Related REQ** | REQ-03 |
 | **Severity** | High |
 | **Detected by** | Nguyen An Khanh |
@@ -506,7 +506,7 @@ Map English category names ("Technology") to Vietnamese category data ("Công ng
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-011 |
-| **Related TC** | TC-34 |
+| **Related TC** | TC-33 |
 | **Related REQ** | REQ-03 |
 | **Severity** | Medium |
 | **Detected by** | Nguyen An Khanh |
@@ -552,7 +552,7 @@ Translate category labels when switching language according to SRS bilingual UI 
 | Field | Value |
 |-------|-------|
 | **Bug ID** | BUG-012 |
-| **Related TC** | TC-27 |
+| **Related TC** | TC-26 |
 | **Related REQ** | REQ-08 |
 | **Severity** | High |
 | **Detected by** | Nguyen An Khanh |

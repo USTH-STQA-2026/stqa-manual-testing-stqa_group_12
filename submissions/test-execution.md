@@ -39,17 +39,16 @@
 | TC-21 | Overdue handling | Detect and mark 2 overdue records | Detect and mark 2 overdue records | ✅ **PASS** | - | - |
 | TC-22 | Overdue handling | Still detect and mark 2 overdue records | Report 0 overdue records | ❌ **FAIL** | - | BUG-005 |
 | TC-23 | Add member | Add successful (valid email) | System shows error "Invalid email" and member is not created | ❌ **FAIL** | - | BUG-006 |
-| TC-24 | Add member | Show error "Invalid email" | Member added successfully despite invalid email | ❌ **FAIL** | - | BUG-006 |
-| TC-25 | Add member | Show error "Email already exists" | Display error "Email already exists" | ✅ **PASS** | - | - |
-| TC-26 | Borrow record lookup (Librarian) | Display 5 records: BR001-BR005 | Display 5 records | ✅ **PASS** | - | - |
-| TC-27 | Borrow record lookup (Member) | Display only BR001, BR004 (own records) | Member account can view borrow records of another member (MEM003) | ❌ **FAIL** | - | BUG-007 |
-| TC-28 | Add member | Show error "Invalid email", cannot create (invalid email + valid phone) | Add successful | ❌ **FAIL** | - | BUG-008 |
-| TC-29 | Add member | Show email error or both errors (invalid email + invalid phone) | Only show "Invalid phone number" | ❌ **FAIL** | - | BUG-009 |
-| TC-30 | Add member | Show error "Invalid phone number" (valid email + invalid phone) | Show error "Invalid email" | ❌ **FAIL** | - | BUG-010 |
-| TC-31 | Add member | Add successful (valid email + valid phone) | Add successful | ✅ **PASS** | - | - |
-| TC-32 | Search (English) | Display book "Lập trình Flutter cơ bản" | Display book "Lập trình Flutter cơ bản" | ✅ **PASS** | - | - |
-| TC-33 | Filter category (English) | Display Technology category books | No books found | ❌ **FAIL** | - | BUG-011 |
-| TC-34 | Category dropdown (English) | Dropdown displays English (Technology, Education, Economics, Soft Skills, Management, Literature) | Dropdown displays Vietnamese (Công nghệ, Giáo dục, Kinh tế, Kỹ năng mềm, Quản trị, Văn học) | ❌ **FAIL** | - | BUG-012 |
+| TC-24 | Add member | Show error "Email already exists" | Display error "Email already exists" | ✅ **PASS** | - | - |
+| TC-25 | Borrow record lookup (Librarian) | Display 5 records: BR001-BR005 | Display 5 records | ✅ **PASS** | - | - |
+| TC-26 | Borrow record lookup (Member) | Display only BR001, BR004 (own records) | Member account can view borrow records of another member (MEM003) | ❌ **FAIL** | - | BUG-007 |
+| TC-27 | Add member | Show error "Invalid email", cannot create (invalid email + valid phone) | Add successful | ❌ **FAIL** | - | BUG-008 |
+| TC-28 | Add member | Show email error or both errors (invalid email + invalid phone) | Only show "Invalid phone number" | ❌ **FAIL** | - | BUG-009 |
+| TC-29 | Add member | Show error "Invalid phone number" (valid email + invalid phone) | Show error "Invalid email" | ❌ **FAIL** | - | BUG-010 |
+| TC-30 | Add member | Add successful (valid email + valid phone) | Add successful | ✅ **PASS** | - | - |
+| TC-31 | Search (English) | Display book "Lập trình Flutter cơ bản" | Display book "Lập trình Flutter cơ bản" | ✅ **PASS** | - | - |
+| TC-32 | Filter category (English) | Display Technology category books | No books found | ❌ **FAIL** | - | BUG-011 |
+| TC-33 | Category dropdown (English) | Dropdown displays English (Technology, Education, Economics, Soft Skills, Management, Literature) | Dropdown displays Vietnamese (Công nghệ, Giáo dục, Kinh tế, Kỹ năng mềm, Quản trị, Văn học) | ❌ **FAIL** | - | BUG-012 |
 
 ## Summary of Results
 
