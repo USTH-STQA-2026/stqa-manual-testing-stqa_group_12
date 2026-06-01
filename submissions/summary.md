@@ -11,7 +11,7 @@
 | Field | Information |
 |-------|-------------|
 | **Team** | Group 12 |
-| **Class** | SE001.P11 |
+| **Class** | 52ICT2012.L1 |
 | **Report Date** | 28/05/2026 |
 | **Tested System** | https://stqa.rbc.vn — v1.0 |
 
