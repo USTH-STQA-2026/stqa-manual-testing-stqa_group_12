@@ -255,10 +255,3 @@
 | Member Management | 7 | REQ-07 | EP, BVA |
 | Borrow Record Lookup | 2 | REQ-08 | EP |
 | **Total** | **34** | **REQ-01 → REQ-08** | **EP, BVA, DT** |
-
-### SUGG-001: Gợi ý thêm yêu cầu trim khoảng trắng vào SRS
-
-| Trường | Nội dung |
-|--------|----------|
-| **Mô tả** | Hệ thống hiện tại có thể đăng nhập thành công khi email có dấu cách ở đầu/cuối |
-| **Đề xuất** | Nên bổ sung vào SRS REQ-01: "Hệ thống tự động loại bỏ khoảng trắng ở đầu và cuối email trước khi xử lý" |

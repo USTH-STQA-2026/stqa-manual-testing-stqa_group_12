@@ -593,4 +593,3 @@ Security vulnerability. Members can view any other member's borrowing history. V
 **Recommendation:**
 When member logs in, only fetch and display borrow records of that specific member ID from session. If search function exists, check permissions before returning results as specified in SRS REQ-08
 
-<!-- Copy template BUG trên để thêm BUG-03, BUG-04, ... cho mỗi TC Fail -->
