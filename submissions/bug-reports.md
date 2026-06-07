@@ -116,9 +116,8 @@ English filtering functionality does not work as specified.
 
 #### Evidence
 
-![BUG-002](images/BUG-002.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d6f090b9-4f1c-4afb-9d16-5487b3fba5a0" />
 
-*Insert screenshot showing empty result after selecting Technology category.*
 
 #### Recommendation
 
@@ -218,9 +217,8 @@ Users receive misleading information about account status.
 
 #### Evidence
 
-![BUG-004](images/BUG-004.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/80a6d6fc-26be-42cc-9ab3-12da214d0738" />
 
-*Insert screenshot showing incorrect error message.*
 
 #### Recommendation
 
@@ -270,9 +268,8 @@ Librarians may not recognize overdue returns.
 
 #### Evidence
 
-![BUG-005](images/BUG-005.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/baf433f1-3a6f-4b0e-929d-7a1be653f0c7" />
 
-*Insert screenshot showing successful return without warning.*
 
 #### Recommendation
 
