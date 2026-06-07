@@ -116,7 +116,8 @@ English filtering functionality does not work as specified.
 
 #### Evidence
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d6f090b9-4f1c-4afb-9d16-5487b3fba5a0" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/06216361-f8c5-4a57-bdc4-7d6a6ad15bb8" />
+
 
 
 #### Recommendation
