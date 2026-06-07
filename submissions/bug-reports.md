@@ -11,463 +11,475 @@
 
 ---
 
-# 5. Defect Reports
+ # Defect Reports
 
-## Common Information
+## A. Common Information
 
-| Field | Value |
-|---------|---------|
-| Project | ABC Library Borrowing Management System |
-| Version | v1.0 |
-| Environment | Chrome Browser on Windows |
-| Test Period | June 2026 |
-| Status | Open |
+| Field       | Value                                   |
+| ----------- | --------------------------------------- |
+| Project     | ABC Library Borrowing Management System |
+| Version     | v1.0                                    |
+| Environment | Chrome Browser on Windows               |
+| Team        | Group 12                                |
+| Test Period | May 2026                               |
+| Status      | Open                                    |
 
 ---
 
-# 5.1 Search & Filter Books (REQ-03)
+# B. Bug Reports
 
-## BUG-001: Search and Filter Do Not Combine
+## 1. Search & Filter Books (REQ-03)
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-001 |
-| **Related TC** | TC-11 |
-| **Related REQ** | REQ-03 |
-| **Severity** | High |
-| **Detected by** | Nguyen An Khanh |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+### BUG-001: Search and Filter Do Not Combine
 
-### Title
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-001 |
+| Related TC  | TC-11   |
+| Related REQ | REQ-03  |
+| Severity    | High    |
+| Status      | Open    |
+
+#### Title
+
 Search and category filter do not work together.
 
-### Precondition
-Logged in and currently on Books page.
+#### Precondition
 
-### Steps to Reproduce
+User logged in and currently on Books page.
+
+#### Steps to Reproduce
+
 1. Select category "Literature".
 2. Enter keyword "Flutter".
 3. Press Enter.
 
-### Expected Result (SRS REQ-03)
-- Search and filter must work together.
-- System displays "No books found".
+#### Expected Result
 
-### Actual Result
-- BOOK001 "Lập trình Flutter cơ bản" is displayed.
-- Category filter is ignored.
+* Search and filter conditions are applied together.
+* System displays "No books found".
 
-### Impact
+#### Actual Result
+
+* BOOK001 "Lập trình Flutter cơ bản" is displayed.
+* Category filter condition is ignored.
+
+#### Impact
+
 Users cannot accurately search within a selected category.
 
-### Evidence
+#### Evidence
 
-![BUG-001-01](images/BUG-001-01.png)
+![BUG-001](images/BUG-001.png)
 
 *Insert screenshot showing Literature filter and Flutter search returning Technology book.*
 
-### Recommendation
+#### Recommendation
+
 Apply search and category conditions using AND logic.
 
 ---
 
-## BUG-002: English Category Name Filtering Does Not Work
+### BUG-002: English Category Filtering Does Not Work
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-002 |
-| **Related TC** | TC-14 |
-| **Related REQ** | REQ-03 |
-| **Severity** | Medium |
-| **Detected by** | Nguyen An Khanh |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-002 |
+| Related TC  | TC-14   |
+| Related REQ | REQ-03  |
+| Severity    | Medium  |
+| Status      | Open    |
 
-### Title
+#### Title
+
 System cannot filter books using English category names.
 
-### Precondition
-Logged in and currently on Books page.
+#### Precondition
 
-### Steps to Reproduce
+User logged in and currently on Books page.
+
+#### Steps to Reproduce
+
 1. Open category dropdown.
 2. Select "Technology".
 
-### Expected Result (SRS REQ-03)
-Technology books should be displayed.
+#### Expected Result
 
-### Actual Result
-No books found.
+Books in Technology category are displayed.
 
-### Impact
-English category filtering feature does not work as specified.
+#### Actual Result
 
-### Evidence
+No books are displayed.
 
-![BUG-002-01](images/BUG-002-01.png)
+#### Impact
 
-*Insert screenshot showing empty results after selecting Technology category.*
+English filtering functionality does not work as specified.
 
-### Recommendation
-Map English category names correctly to corresponding category data.
+#### Evidence
+
+![BUG-002](images/BUG-002.png)
+
+*Insert screenshot showing empty result after selecting Technology category.*
+
+#### Recommendation
+
+Map English category names correctly to category data.
 
 ---
 
-# 5.2 Borrow Book (REQ-04)
+## 2. Borrow Book (REQ-04)
 
-## BUG-003: Borrow Limit Validation Missing
+### BUG-003: Borrow Limit Validation Missing
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-003 |
-| **Related TC** | TC-17 |
-| **Related REQ** | REQ-04 |
-| **Severity** | Critical |
-| **Detected by** | Nguyen An Khanh|
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value    |
+| ----------- | -------- |
+| Bug ID      | BUG-003  |
+| Related TC  | TC-17    |
+| Related REQ | REQ-04   |
+| Severity    | Critical |
+| Status      | Open     |
 
-### Title
+#### Title
+
 Member can borrow more than the maximum limit of 3 books.
 
-### Precondition
+#### Precondition
+
 Member MEM002 already has 3 borrowed books.
 
-### Steps to Reproduce
+#### Steps to Reproduce
+
 1. Login as MEM002.
 2. Select an available book.
 3. Click Borrow.
 
-### Expected Result (SRS REQ-04)
-- Display message "Reached limit of 3 books".
-- Borrow request is rejected.
+#### Expected Result
 
-### Actual Result
-- Borrow succeeds.
-- Member can borrow a 4th book.
+* Display message "Reached limit of 3 books".
+* Borrow request is rejected.
 
-### Impact
-Violates library borrowing policy.
+#### Actual Result
 
-### Evidence
+* Borrow request succeeds.
+* Member can borrow a fourth book.
 
-![BUG-003-01](images/BUG-003-01.png)
+#### Impact
 
-*Insert screenshot showing successful borrowing despite reaching the limit.*
+Violates core library borrowing policy.
 
-### Recommendation
-Validate borrow count before creating a new borrow record.
+#### Evidence
+
+![BUG-003](images/BUG-003.png)
+
+*Insert screenshot showing successful borrowing despite reaching limit.*
+
+#### Recommendation
+
+Validate current borrowed book count before creating a new borrow record.
 
 ---
 
-## BUG-004: Wrong Error Message for Suspended Member
+### BUG-004: Wrong Error Message for Suspended Member
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-004 |
-| **Related TC** | TC-18 |
-| **Related REQ** | REQ-04 |
-| **Severity** | Medium |
-| **Detected by** | Le Tan Thanh |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-004 |
+| Related TC  | TC-18   |
+| Related REQ | REQ-04  |
+| Severity    | Medium  |
+| Status      | Open    |
 
-### Title
-Suspended member receives an incorrect error message when borrowing a book.
+#### Title
 
-### Precondition
+Suspended member receives incorrect error message when borrowing a book.
+
+#### Precondition
+
 Member MEM004 has status "Suspended".
 
-### Steps to Reproduce
+#### Steps to Reproduce
+
 1. Login as MEM004.
 2. Select an available book.
 3. Click Borrow.
 
-### Expected Result (SRS REQ-04)
-Display "Account is suspended".
+#### Expected Result
 
-### Actual Result
-Display "Member expired. Cannot borrow book".
+Display message:
+"Account is suspended"
 
-### Impact
-Misleading information is shown to users.
+#### Actual Result
 
-### Evidence
+Display message:
+"Member expired. Cannot borrow book"
 
-![BUG-004-01](images/BUG-004-01.png)
+#### Impact
+
+Users receive misleading information about account status.
+
+#### Evidence
+
+![BUG-004](images/BUG-004.png)
 
 *Insert screenshot showing incorrect error message.*
 
-### Recommendation
-Return the correct validation message based on account status.
+#### Recommendation
+
+Return correct validation message according to member status.
 
 ---
 
-# 5.3 Return Book (REQ-05)
+## 3. Return Book (REQ-05)
 
-## BUG-005: Overdue Return Warning Is Missing
+### BUG-005: Overdue Return Warning Is Missing
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-005 |
-| **Related TC** | TC-20 |
-| **Related REQ** | REQ-05 |
-| **Severity** | Medium |
-| **Detected by** | Le Tan Thanh |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-005 |
+| Related TC  | TC-20   |
+| Related REQ | REQ-05  |
+| Severity    | Medium  |
+| Status      | Open    |
 
-### Title
-System does not display overdue warning when returning an overdue book.
+#### Title
 
-### Precondition
+System does not display overdue warning when returning overdue books.
+
+#### Precondition
+
 Borrow record BR001 is overdue.
 
-### Steps to Reproduce
+#### Steps to Reproduce
+
 1. Open Borrow/Return page.
 2. Select BR001.
 3. Click Return.
 
-### Expected Result (SRS REQ-05)
-- Return succeeds.
-- Warning message "Book return is overdue" is displayed.
+#### Expected Result
 
-### Actual Result
-- Return succeeds.
-- No overdue warning is displayed.
+* Return succeeds.
+* Warning message "Book return is overdue" is displayed.
 
-### Impact
-Librarians may not notice overdue returns.
+#### Actual Result
 
-### Evidence
+* Return succeeds.
+* No overdue warning is displayed.
 
-![BUG-005-01](images/BUG-005-01.png)
+#### Impact
 
-*Insert screenshot showing successful return without overdue warning.*
+Librarians may not recognize overdue returns.
 
-### Recommendation
-Display overdue notification before completing return process.
+#### Evidence
+
+![BUG-005](images/BUG-005.png)
+
+*Insert screenshot showing successful return without warning.*
+
+#### Recommendation
+
+Display overdue warning before completing return process.
 
 ---
 
-# 5.4 Overdue Handling (REQ-06)
+## 4. Overdue Handling (REQ-06)
 
-## BUG-006: Repeated Overdue Check Produces Incorrect Result
+### BUG-006: Repeated Overdue Check Produces Incorrect Result
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-006 |
-| **Related TC** | TC-23 |
-| **Related REQ** | REQ-06 |
-| **Severity** | Medium |
-| **Detected by** | Hoang Cong Duong |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-006 |
+| Related TC  | TC-23   |
+| Related REQ | REQ-06  |
+| Severity    | Medium  |
+| Status      | Open    |
 
-### Title
+#### Title
+
 Repeated overdue checking reports incorrect overdue count.
 
-### Precondition
+#### Precondition
+
 Overdue records have already been marked.
 
-### Steps to Reproduce
+#### Steps to Reproduce
+
 1. Click "Check overdue books".
 2. Click "Check overdue books" again.
 
-### Expected Result (SRS REQ-06)
-System should maintain correct overdue status.
+#### Expected Result
 
-### Actual Result
+System maintains correct overdue status.
+
+#### Actual Result
+
 System reports 0 overdue records.
 
-### Impact
+#### Impact
+
 Overdue information becomes inconsistent.
 
-### Evidence
+#### Evidence
 
-![BUG-006-01](images/BUG-006-01.png)
+![BUG-006](images/BUG-006.png)
 
-*Insert screenshot showing incorrect overdue count after second check.*
+*Insert screenshot showing incorrect overdue count.*
 
-### Recommendation
+#### Recommendation
+
 Make overdue checking idempotent and preserve existing overdue status.
 
 ---
 
-# 5.5 Member Management (REQ-07)
+## 5. Member Management (REQ-07)
 
-## BUG-007: Valid Email Is Rejected During Member Creation
+### BUG-007: Valid Email Is Rejected During Member Creation
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-007 |
-| **Related TC** | TC-24 |
-| **Related REQ** | REQ-07 |
-| **Severity** | High |
-| **Detected by** | Hoang Cong Duong |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-007 |
+| Related TC  | TC-24   |
+| Related REQ | REQ-07  |
+| Severity    | High    |
+| Status      | Open    |
 
-### Title
+#### Title
+
 System rejects valid email address when creating a member.
 
-### Precondition
-Librarian logged in.
+#### Expected Result
 
-### Steps to Reproduce
-1. Open Members page.
-2. Click Add Member.
-3. Enter valid information.
-4. Submit form.
-
-### Expected Result (SRS REQ-07)
 Member is created successfully.
 
-### Actual Result
+#### Actual Result
+
 System displays "Invalid email".
 
-### Impact
-Valid members cannot be added.
+#### Impact
 
-### Evidence
+Valid members cannot be added to the system.
 
-![BUG-007-01](images/BUG-007-01.png)
+#### Evidence
+
+![BUG-007](images/BUG-007.png)
 
 *Insert screenshot showing valid email rejected.*
 
-### Recommendation
+#### Recommendation
+
 Review email validation logic.
 
 ---
 
-## BUG-008: Invalid Email Is Accepted
+### BUG-008: Invalid Email Is Accepted
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-008 |
-| **Related TC** | TC-26 |
-| **Related REQ** | REQ-07 |
-| **Severity** | High |
-| **Detected by** | Nguyen Gia Long |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-008 |
+| Related TC  | TC-26   |
+| Related REQ | REQ-07  |
+| Severity    | High    |
+| Status      | Open    |
 
-### Title
+#### Title
+
 System accepts invalid email format and creates member account.
 
-### Precondition
-Librarian logged in.
+#### Expected Result
 
-### Steps to Reproduce
-1. Open Add Member form.
-2. Enter email `test@email`.
-3. Enter valid phone number.
-4. Submit form.
+Display "Invalid email" and reject member creation.
 
-### Expected Result (SRS REQ-07)
-Display "Invalid email" and reject creation.
+#### Actual Result
 
-### Actual Result
-Member is created successfully.
+Member account is created successfully.
 
-### Impact
-Invalid member data is stored in the system.
+#### Impact
 
-### Evidence
+Invalid data is stored in the system.
 
-![BUG-008-01](images/BUG-008-01.png)
+#### Evidence
 
-*Insert screenshot showing member created with invalid email.*
+![BUG-008](images/BUG-008.png)
 
-### Recommendation
-Validate email format before saving.
+*Insert screenshot showing invalid email accepted.*
+
+#### Recommendation
+
+Validate email format before saving data.
 
 ---
 
-## BUG-009: Email Validation Not Triggered When Multiple Fields Are Invalid
+### BUG-009: Email Validation Not Triggered When Multiple Fields Are Invalid
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-009 |
-| **Related TC** | TC-27 |
-| **Related REQ** | REQ-07 |
-| **Severity** | Medium |
-| **Detected by** | Nguyen Gia Long |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value   |
+| ----------- | ------- |
+| Bug ID      | BUG-009 |
+| Related TC  | TC-27   |
+| Related REQ | REQ-07  |
+| Severity    | Medium  |
+| Status      | Open    |
 
-### Title
+#### Title
+
 System only validates phone number when both email and phone are invalid.
 
-### Precondition
-Librarian logged in.
+#### Expected Result
 
-### Steps to Reproduce
-1. Open Add Member form.
-2. Enter email `test@email`.
-3. Enter phone `abc`.
-4. Submit form.
-
-### Expected Result (SRS REQ-07)
 Display email error or both validation errors.
 
-### Actual Result
+#### Actual Result
+
 Only phone validation error is displayed.
 
-### Impact
-Users cannot identify all invalid fields.
+#### Impact
 
-### Evidence
+Users cannot identify all invalid input fields.
 
-![BUG-009-01](images/BUG-009-01.png)
+#### Evidence
+
+![BUG-009](images/BUG-009.png)
 
 *Insert screenshot showing only phone validation error.*
 
-### Recommendation
-Validate all fields before returning errors.
+#### Recommendation
+
+Validate all fields before returning error messages.
 
 ---
 
-# 5.6 Borrow Record Lookup (REQ-08)
+## 6. Borrow Record Lookup (REQ-08)
 
-## BUG-010: Member Can View Other Members' Borrow Records
+### BUG-010: Member Can View Other Members' Borrow Records
 
-| Field | Value |
-|-------|-------|
-| **Bug ID** | BUG-010 |
-| **Related TC** | TC-29 |
-| **Related REQ** | REQ-08 |
-| **Severity** | Critical |
-| **Detected by** | Vu Anh Quan |
-| **Detection Date** | 25/05/2026 |
-| **Status** | Open |
+| Field       | Value    |
+| ----------- | -------- |
+| Bug ID      | BUG-010  |
+| Related TC  | TC-29    |
+| Related REQ | REQ-08   |
+| Severity    | Critical |
+| Status      | Open     |
 
-### Title
+#### Title
+
 Member account can access borrow records belonging to another member.
 
-### Precondition
-Logged in as a normal member.
+#### Expected Result
 
-### Steps to Reproduce
-1. Login as a member.
-2. Open Borrow/Return page.
-3. View borrow records.
-
-### Expected Result (SRS REQ-08)
 Member can only view their own borrow records.
 
-### Actual Result
-Member can view records belonging to MEM003.
+#### Actual Result
 
-### Impact
+Member can view records belonging to another member (MEM003).
+
+#### Impact
+
 Violates access control and user privacy requirements.
 
-### Evidence
+#### Evidence
 
-![BUG-010-01](images/BUG-010-01.png)
+![BUG-010](images/BUG-010.png)
 
 *Insert screenshot showing another member's records visible.*
 
-### Recommendation
-Apply authorization checks based on logged-in user ID.
+#### Recommendation
+
+Apply authorization checks based on logged-in member ID.
