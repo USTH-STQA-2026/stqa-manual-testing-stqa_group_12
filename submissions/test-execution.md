@@ -29,22 +29,22 @@
 | TC-11 | Search + Filter | No books displayed, show "No books found" | Still displays Flutter book (belongs to Technology category) | ❌ FAIL | - | BUG-001 |
 | TC-12 | Search + Filter | Display BOOK019 | Display BOOK019 | ✅ PASS | - | - |
 | TC-13 | Search (English) | Display book "Lập trình Flutter cơ bản" | Display book "Lập trình Flutter cơ bản" | ✅ PASS | - | - |
-| TC-14 | Filter category (English) | Display Technology category books | No books found | ❌ FAIL | - | BUG-011 |
+| TC-14 | Filter category (English) | Display Technology category books | No books found | ❌ FAIL | - | BUG-002 |
 | TC-15 | Borrow book | Borrow successful, book status changes to "Borrowed" | Borrow successful | ✅ PASS | - | - |
 | TC-16 | Borrow book | Display error message "Book already borrowed" | Display error message "Book already borrowed" | ✅ PASS | - | - |
-| TC-17 | Borrow book | Cannot borrow 4th book, show "Reached limit of 3 books" | Still can borrow 4th book | ❌ FAIL | - | BUG-002 |
-| TC-18 | Borrow book | "Account is suspended" | "Member expired. Cannot borrow book" | ❌ FAIL | - | BUG-003 |
+| TC-17 | Borrow book | Cannot borrow 4th book, show "Reached limit of 3 books" | Still can borrow 4th book | ❌ FAIL | - | BUG-003 |
+| TC-18 | Borrow book | "Account is suspended" | "Member expired. Cannot borrow book" | ❌ FAIL | - | BUG-004 |
 | TC-19 | Return book | Return successful, no warning | Return successful, no warning | ✅ PASS | - | - |
-| TC-20 | Return book | Return successful + show warning "Book return is overdue" | Return successful, NO warning | ❌ FAIL | - | BUG-004 |
+| TC-20 | Return book | Return successful + show warning "Book return is overdue" | Return successful, NO warning | ❌ FAIL | - | BUG-005 |
 | TC-21 | Return book | No return button displayed for unborrowed books | No return button displayed | ✅ PASS | - | - |
 | TC-22 | Overdue handling | Detect and mark 2 overdue records | Detect and mark 2 overdue records | ✅ PASS | - | - |
-| TC-23 | Overdue handling | Still detect and mark 2 overdue records | Report 0 overdue records | ❌ FAIL | - | BUG-005 |
-| TC-24 | Add member | Add successful (valid email) | System shows error "Invalid email" and member is not created | ❌ FAIL | - | BUG-006 |
+| TC-23 | Overdue handling | Still detect and mark 2 overdue records | Report 0 overdue records | ❌ FAIL | - | BUG-006 |
+| TC-24 | Add member | Add successful (valid email) | System shows error "Invalid email" and member is not created | ❌ FAIL | - | BUG-007 |
 | TC-25 | Add member | Show error "Email already exists" | Display error "Email already exists" | ✅ PASS | - | - |
 | TC-26 | Add member | Show error "Invalid email", cannot create (invalid email + valid phone) | Add successful | ❌ FAIL | - | BUG-008 |
 | TC-27 | Add member | Show email error or both errors (invalid email + invalid phone) | Only show "Invalid phone number" | ❌ FAIL | - | BUG-009 |
 | TC-28 | Borrow record lookup (Librarian) | Display 5 records: BR001-BR005 | Display 5 records | ✅ PASS | - | - |
-| TC-29 | Borrow record lookup (Member) | Display only BR001, BR004 (own records) | Member account can view borrow records of another member (MEM003) | ❌ FAIL | - | BUG-007 |
+| TC-29 | Borrow record lookup (Member) | Display only BR001, BR004 (own records) | Member account can view borrow records of another member (MEM003) | ❌ FAIL | - | BUG-010 |
 
 
 ## Summary of Results
