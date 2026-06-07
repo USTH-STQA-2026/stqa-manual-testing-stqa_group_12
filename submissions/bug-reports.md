@@ -70,9 +70,8 @@ Users cannot accurately search within a selected category.
 
 #### Evidence
 
-![BUG-001](images/BUG-001.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0b03c7bc-fa9f-48b2-a35a-1cac282f4020" />
 
-*Insert screenshot showing Literature filter and Flutter search returning Technology book.*
 
 #### Recommendation
 
