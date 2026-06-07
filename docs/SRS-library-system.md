@@ -133,13 +133,15 @@ Hệ thống quản lý mượn sách cho một thư viện nhỏ. Hai vai trò 
 | **Từ chối nếu** | Sách đã được mượn, thành viên đạt giới hạn 3 sách, thành viên bị **tạm ngưng** hoặc **hết hạn** |
 | **Thông báo lỗi** | Phải mô tả **đúng lý do** từ chối (tạm ngưng ≠ hết hạn) |
 
-### REQ-05: Trả sách / Return Book
+### IDM — Return Book (REQ-05)
+
+|### REQ-05: Trả sách / Return Book
 
 | Mục | Nội dung |
 |-----|---------|
-| **Điều kiện** | Chỉ trả sách mà thành viên **đang mượn** |
-| **Kết quả** | Sách chuyển về trạng thái "Có sẵn" |
-| **Quá hạn** | Nếu trả quá hạn → hệ thống phải hiển thị **cảnh báo quá hạn** |
+| *Điều kiện* | Chỉ trả sách mà thành viên *đang mượn* |
+| *Kết quả* | Sách chuyển về trạng thái "Có sẵn" |
+| *Quá hạn* | Nếu trả quá hạn → hệ thống phải hiển thị *cảnh báo quá hạn* |
 
 ### REQ-06: Xử lý sách quá hạn / Overdue Handling
 
