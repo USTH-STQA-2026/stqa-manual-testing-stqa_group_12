@@ -49,7 +49,7 @@
 | 🔴 High   | 7      | BUG-001, BUG-003, BUG-004, BUG-005, BUG-007, BUG-008, BUG-010 |
 | 🟡 Medium | 3      | BUG-002, BUG-006, BUG-009                                     |
 | 🟢 Low    | 0      | -                                                             |
-| **Total** | **10** |                                                               |
+| **Total** | **10** |                                                                |
 
 ---
 
