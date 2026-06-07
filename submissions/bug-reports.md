@@ -167,9 +167,8 @@ Violates core library borrowing policy.
 
 #### Evidence
 
-![BUG-003](images/BUG-003.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/780e50cf-5ff8-46a4-8900-66a1eb0a8c02" />
 
-*Insert screenshot showing successful borrowing despite reaching limit.*
 
 #### Recommendation
 
@@ -316,9 +315,8 @@ Overdue information becomes inconsistent.
 
 #### Evidence
 
-![BUG-006](images/BUG-006.png)
+<img width="1913" height="811" alt="image" src="https://github.com/user-attachments/assets/6ae59a56-8ff5-4566-a745-162f13bb1458" />
 
-*Insert screenshot showing incorrect overdue count.*
 
 #### Recommendation
 
@@ -356,9 +354,8 @@ Valid members cannot be added to the system.
 
 #### Evidence
 
-![BUG-007](images/BUG-007.png)
+<img width="1920" height="797" alt="image" src="https://github.com/user-attachments/assets/dac478a0-27b4-4dd8-b614-ba0b2e793ee4" />
 
-*Insert screenshot showing valid email rejected.*
 
 #### Recommendation
 
@@ -394,9 +391,10 @@ Invalid data is stored in the system.
 
 #### Evidence
 
-![BUG-008](images/BUG-008.png)
+<img width="1914" height="904" alt="image" src="https://github.com/user-attachments/assets/9b0bf5a3-2f93-47cf-8981-08c4c1b7190b" />
+<img width="1915" height="907" alt="image" src="https://github.com/user-attachments/assets/b61a112d-4f42-4cf6-8748-1b65799b448c" />
 
-*Insert screenshot showing invalid email accepted.*
+
 
 #### Recommendation
 
@@ -432,9 +430,8 @@ Users cannot identify all invalid input fields.
 
 #### Evidence
 
-![BUG-009](images/BUG-009.png)
+<img width="1918" height="908" alt="image" src="https://github.com/user-attachments/assets/74e6b90b-a0a6-47b6-8647-6765008e373f" />
 
-*Insert screenshot showing only phone validation error.*
 
 #### Recommendation
 
@@ -472,9 +469,8 @@ Violates access control and user privacy requirements.
 
 #### Evidence
 
-![BUG-010](images/BUG-010.png)
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/4d4e8b68-022b-4469-97e2-5eb09d3f7dc0" />
 
-*Insert screenshot showing another member's records visible.*
 
 #### Recommendation
 
