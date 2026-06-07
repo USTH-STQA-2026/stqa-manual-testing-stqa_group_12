@@ -124,7 +124,7 @@ Map English category names correctly to corresponding category data.
 | **Related TC** | TC-17 |
 | **Related REQ** | REQ-04 |
 | **Severity** | Critical |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Nguyen An Khanh|
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -169,7 +169,7 @@ Validate borrow count before creating a new borrow record.
 | **Related TC** | TC-18 |
 | **Related REQ** | REQ-04 |
 | **Severity** | Medium |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Le Tan Thanh |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -214,7 +214,7 @@ Return the correct validation message based on account status.
 | **Related TC** | TC-20 |
 | **Related REQ** | REQ-05 |
 | **Severity** | Medium |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Le Tan Thanh |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -261,7 +261,7 @@ Display overdue notification before completing return process.
 | **Related TC** | TC-23 |
 | **Related REQ** | REQ-06 |
 | **Severity** | Medium |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Hoang Cong Duong |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -305,7 +305,7 @@ Make overdue checking idempotent and preserve existing overdue status.
 | **Related TC** | TC-24 |
 | **Related REQ** | REQ-07 |
 | **Severity** | High |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Hoang Cong Duong |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -349,7 +349,7 @@ Review email validation logic.
 | **Related TC** | TC-26 |
 | **Related REQ** | REQ-07 |
 | **Severity** | High |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Nguyen Gia Long |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -393,7 +393,7 @@ Validate email format before saving.
 | **Related TC** | TC-27 |
 | **Related REQ** | REQ-07 |
 | **Severity** | Medium |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Nguyen Gia Long |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
@@ -439,7 +439,7 @@ Validate all fields before returning errors.
 | **Related TC** | TC-29 |
 | **Related REQ** | REQ-08 |
 | **Severity** | Critical |
-| **Detected by** | Nguyen An Khanh |
+| **Detected by** | Vu Anh Quan |
 | **Detection Date** | 25/05/2026 |
 | **Status** | Open |
 
