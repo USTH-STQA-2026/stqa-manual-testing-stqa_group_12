@@ -315,9 +315,7 @@ System reports 0 overdue records.
 Overdue information becomes inconsistent.
 
 #### Evidence
-
-<img width="1913" height="811" alt="image" src="https://github.com/user-attachments/assets/6ae59a56-8ff5-4566-a745-162f13bb1458" />
-
+<img width="1918" height="814" alt="image" src="https://github.com/user-attachments/assets/70f0a6be-bcdc-4a66-946d-d5f62b4c4079" />
 
 #### Recommendation
 
