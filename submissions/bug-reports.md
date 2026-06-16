@@ -8,6 +8,8 @@
 |---|---|
 | **Nhóm** | Group 12 |
 | **Ngày báo cáo** | 27/05/2026 |
+| **Link Github** | https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_12 |
+
 
 ---
 
