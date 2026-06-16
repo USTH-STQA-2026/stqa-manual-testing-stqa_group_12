@@ -14,6 +14,7 @@
 | **Class**         | 52ICT2012.L1               |
 | **Report Date**   | 28/05/2026                 |
 | **Tested System** | https://stqa.rbc.vn — v1.0 |
+| **Link Github** | https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_12 |
 
 ---
 
