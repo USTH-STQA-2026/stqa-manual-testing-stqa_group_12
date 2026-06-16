@@ -6,8 +6,9 @@ Bài tập thực hành **Kiểm thử thủ công (Manual Testing)** cho môn *
 
 Hệ thống cần kiểm thử: **Quản lý mượn sách Thư viện ABC** — [https://stqa.rbc.vn](https://stqa.rbc.vn)
 
-> **📚 Hệ thống hư cấu / Fictional System**: Thư viện ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / *ABC Library is a **fictional** system designed for educational purposes. All names, organizations, and data are simulated.*
+**Link GitHub:** [https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_12](https://github.com/USTH-STQA-2026/stqa-manual-testing-stqa_group_12)
 
+> **📚 Hệ thống hư cấu / Fictional System**: Thư viện ABC là hệ thống **hư cấu** được thiết kế cho mục đích học tập. Tên nhân vật, tổ chức và dữ liệu đều là giả lập. / *ABC Library is a **fictional** system designed for educational purposes. All names, organizations, and data are simulated.*
 ---
 
 ## 👥 Thông tin nhóm / Team Information
